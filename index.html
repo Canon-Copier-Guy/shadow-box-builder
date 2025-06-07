@@ -9,7 +9,7 @@
         body {
             font-family: Ubuntu Mono;
             text-align: center;
-            padding: 50px;
+            padding: 10px;
         }
 
         .fullBox {
@@ -25,6 +25,7 @@
     </style>
 </head>
 <body>
+    <div id="theDiv">
     <h1>Start Making your Shadow Box!</h1>
     <select id="boxDropdown" onchange="updateBox()">
         <option value="">-- Select Detachment --</option>
@@ -73,10 +74,24 @@
 
     <br></br>
 
+    </div>
+
     <canvas class="fullBox" id="fullBox"></canvas>
 
     <script>
-        const scale = 0.5;
+        var scale = 0;
+
+        if (window.innerHeight-document.getElementById("theDiv").offsetHeight > window.innerWidth) {
+            scale = (window.innerWidth/2236);
+        }
+        else if (window.innerHeight < window.screen.width) {
+            scale = ((window.innerHeight-document.getElementById("theDiv").offsetHeight)/2796);
+        }
+        else {
+            scale = 0.5;
+        }
+
+        //const scale = 0.5;
         let selectedRank = "";
         var selectedRankIconWidth;
         var selectedRankIconHeight;
@@ -289,7 +304,19 @@
                 ctx.drawImage(img, 0, 0, img.width, img.height, 1118*scale, 775*scale, 312*scale, 75*scale,);	// Draw the image on the canvas.
             }
 
-            /*document.getElementById("placehere").appendChild(elem);
+            /* for (let i=1; document.getElementById('yourSelectElement').selectedOptions.length>=i; i++) {
+                if (document.getElementById('yourSelectElement').selectedOptions.length % 3 = 0) {
+
+                }
+                else if (document.getElementById('yourSelectElement').selectedOptions.length % 3 = 1) {
+                    
+                }
+                else if (document.getElementById('yourSelectElement').selectedOptions.length % 3 = 2) {
+                    
+                }
+            } */
+
+            //document.getElementById("placehere").appendChild(elem);
         }
         function downloadShadowBox() {
             /*
