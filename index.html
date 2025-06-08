@@ -81,12 +81,12 @@
     <script>
         var scale = 0;
 
-        if ((window.innerHeight-document.getElementById("theDiv").offsetHeight-70) > (window.innerWidth-40)*2796/2236) {
+        if ((window.innerHeight-document.getElementById("theDiv").offsetHeight-60) > (window.innerWidth-40)*2796/2236) {
             scale = ((window.innerWidth-40)/2236);
             console.log("scaling by width");
         }
-        if ((window.innerHeight-document.getElementById("theDiv").offsetHeight-70) <= (window.innerWidth-40)*2796/2236) { 
-            scale = ((window.innerHeight-document.getElementById("theDiv").offsetHeight-70)/2796);
+        if ((window.innerHeight-document.getElementById("theDiv").offsetHeight-60) <= (window.innerWidth-40)*2796/2236) { 
+            scale = ((window.innerHeight-document.getElementById("theDiv").offsetHeight-60)/2796);
             console.log("scaling by height");
         }
         
@@ -342,12 +342,12 @@
             a.click();
         }
         function resizeFullBox() {
-            if ((window.innerHeight-document.getElementById("theDiv").offsetHeight-70) > (window.innerWidth-40)*2796/2236) {
+            if ((window.innerHeight-document.getElementById("theDiv").offsetHeight-60) > (window.innerWidth-40)*2796/2236) {
                 scale = ((window.innerWidth-40)/2236);
                 console.log("scaling by width");
             }
-            if ((window.innerHeight-document.getElementById("theDiv").offsetHeight-70) <= (window.innerWidth-40)*2796/2236) { 
-                scale = ((window.innerHeight-document.getElementById("theDiv").offsetHeight-70)/2796);
+            if ((window.innerHeight-document.getElementById("theDiv").offsetHeight-60) <= (window.innerWidth-40)*2796/2236) { 
+                scale = ((window.innerHeight-document.getElementById("theDiv").offsetHeight-60)/2796);
                 console.log("scaling by height");
             }
 
