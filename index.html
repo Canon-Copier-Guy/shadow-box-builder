@@ -79,14 +79,16 @@
     <canvas class="fullBox" id="fullBox"></canvas>
 
     <script>
-        var scale = ((window.innerHeight-document.getElementById("theDiv").offsetHeight-65)/2796);
+        var scale = 0;
 
-        /* if (window.innerHeight-document.getElementById("theDiv").offsetHeight > window.innerWidth) {
-            scale = (window.innerWidth/2236);
+        if ((window.innerHeight-document.getElementById("theDiv").offsetHeight-70) > (window.innerWidth-40)*2796/2236) {
+            scale = ((window.innerWidth-40)/2236);
+            console.log("scaling by width");
         }
-        else if (window.innerHeight < window.screen.width) {
-            scale = ((window.innerHeight-document.getElementById("theDiv").offsetHeight-60)/2796);
-        } */
+        if ((window.innerHeight-document.getElementById("theDiv").offsetHeight-70) <= (window.innerWidth-40)*2796/2236) { 
+            scale = ((window.innerHeight-document.getElementById("theDiv").offsetHeight-70)/2796);
+            console.log("scaling by height");
+        }
         
         //const scale = 0.5;
         let selectedRank = "";
@@ -340,15 +342,6 @@
             a.click();
         }
         function resizeFullBox() {
-            //scale = ((window.innerHeight-document.getElementById("theDiv").offsetHeight-65)/2796);
-
-            /*if (window.innerHeight-document.getElementById("theDiv").offsetHeight-65 > window.innerWidth) {
-                scale = (window.innerWidth/2236);
-            }
-            else if (window.innerHeight < window.screen.width) {
-                scale = ((window.innerHeight-document.getElementById("theDiv").offsetHeight-65)/2796);
-            } */
-            //2796/2236
             if ((window.innerHeight-document.getElementById("theDiv").offsetHeight-70) > (window.innerWidth-40)*2796/2236) {
                 scale = ((window.innerWidth-40)/2236);
                 console.log("scaling by width");
