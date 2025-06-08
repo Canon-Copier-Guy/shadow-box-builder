@@ -24,7 +24,7 @@
         } */
     </style>
 </head>
-<body>
+<body onresize="resizeFullBox()">
     <div id="theDiv">
     <h1>Start Making your Shadow Box!</h1>
     <select id="boxDropdown" onchange="updateBox()">
@@ -79,18 +79,15 @@
     <canvas class="fullBox" id="fullBox"></canvas>
 
     <script>
-        var scale = 0;
+        var scale = ((window.innerHeight-document.getElementById("theDiv").offsetHeight-65)/2796);
 
-        if (window.innerHeight-document.getElementById("theDiv").offsetHeight > window.innerWidth) {
+        /* if (window.innerHeight-document.getElementById("theDiv").offsetHeight > window.innerWidth) {
             scale = (window.innerWidth/2236);
         }
         else if (window.innerHeight < window.screen.width) {
-            scale = ((window.innerHeight-document.getElementById("theDiv").offsetHeight)/2796);
-        }
-        else {
-            scale = 0.5;
-        }
-
+            scale = ((window.innerHeight-document.getElementById("theDiv").offsetHeight-60)/2796);
+        } */
+        
         //const scale = 0.5;
         let selectedRank = "";
         var selectedRankIconWidth;
@@ -230,51 +227,51 @@
                 "4": "https://drive.google.com/thumbnail?id=18n9wE16Nc-KyZNTwCVqW-XjX80TTqPnr&sz=w1000"
                 /*
                 //Strike & Crusade Ribbons
-                Offensive Crusades "1": "https://drive.google.com/thumbnail?id=11ky11IsKxHttkMqMPdb7BahsFvc0UfyI&sz=w1000",
-                Defensive Crusade "2": "https://drive.google.com/thumbnail?id=1SolWu4KTG9GJDD7dWiB4lql-luyRZd-J&sz=w1000",
-                Outstanding Unit "3": "https://drive.google.com/thumbnail?id=1zzRpddSC0jAC8likai_peilo1r7TZBBD&sz=w1000",
-                Choohe Crusade "4": "https://drive.google.com/thumbnail?id=18n9wE16Nc-KyZNTwCVqW-XjX80TTqPnr&sz=w1000",
-                Genesis Crusade "5": "https://drive.google.com/thumbnail?id=1q4bicgFAxe-1j5I3obzfmZe2NuYZE7QE&sz=w1000",
-                Jungle Hero Strike "6": "https://drive.google.com/thumbnail?id=1vYvj0Gtts7dfXizYcmPBKlIzb8y98m_x&sz=w1000",
-                Silent Bastion Strike "7": "https://drive.google.com/thumbnail?id=15SEMhYvPXze6_V0u-5xI55MPP3NgRWlI&sz=w1000",
-                Gloom Crusade "8": "https://drive.google.com/thumbnail?id=1A8Mh75_KIhhaysc9bfVUHApBtWP3F9_7&sz=w1000",
-                Blitzdiver Event "9": "https://drive.google.com/thumbnail?id=1qszcuMSDZku8OFvXtFDuz-2ZaO3gmL9U&sz=w1000",
-                Dio's Duck Divers "10": "https://drive.google.com/thumbnail?id=1veO9ffVU_1S0YWcwrIyUPX0rYpkyg8ru&sz=w1000",
-                Sporeburn Strike "11": "https://drive.google.com/thumbnail?id=1kcNSfhuZWIGH0a09SnLZT0oWiuy-7kQn&sz=w1000",
+                "1": "https://drive.google.com/thumbnail?id=11ky11IsKxHttkMqMPdb7BahsFvc0UfyI&sz=w1000",  //Offensive Crusades
+                "2": "https://drive.google.com/thumbnail?id=1SolWu4KTG9GJDD7dWiB4lql-luyRZd-J&sz=w1000",  //Defensive Crusade
+                "3": "https://drive.google.com/thumbnail?id=1zzRpddSC0jAC8likai_peilo1r7TZBBD&sz=w1000",  //Outstanding Unit
+                "4": "https://drive.google.com/thumbnail?id=18n9wE16Nc-KyZNTwCVqW-XjX80TTqPnr&sz=w1000",  //Choohe Crusade
+                "5": "https://drive.google.com/thumbnail?id=1q4bicgFAxe-1j5I3obzfmZe2NuYZE7QE&sz=w1000",  //Genesis Crusade
+                "6": "https://drive.google.com/thumbnail?id=1vYvj0Gtts7dfXizYcmPBKlIzb8y98m_x&sz=w1000",  //Jungle Hero Strike
+                "7": "https://drive.google.com/thumbnail?id=15SEMhYvPXze6_V0u-5xI55MPP3NgRWlI&sz=w1000",  //Silent Bastion Strike
+                "8": "https://drive.google.com/thumbnail?id=1A8Mh75_KIhhaysc9bfVUHApBtWP3F9_7&sz=w1000",  //Gloom Crusade
+                "9": "https://drive.google.com/thumbnail?id=1qszcuMSDZku8OFvXtFDuz-2ZaO3gmL9U&sz=w1000",  //Blitzdiver Event
+                "10": "https://drive.google.com/thumbnail?id=1veO9ffVU_1S0YWcwrIyUPX0rYpkyg8ru&sz=w1000", //Dio's Duck Divers 
+                "11": "https://drive.google.com/thumbnail?id=1kcNSfhuZWIGH0a09SnLZT0oWiuy-7kQn&sz=w1000", //Sporeburn Strike
 
                 //HAC Ribbons
-                General Brasch "12": "https://drive.google.com/thumbnail?id=18eWC4BQrqgylIjIgGLfzRpw6Us1ohoKh&sz=w1000",
-                John Helldiver "13": "https://drive.google.com/thumbnail?id=1I4aOtSDdIxO5Z5wqTvWdmxT1-zFeuGrW&sz=w1000",
-                Medic "14": "https://drive.google.com/thumbnail?id=11K8TM_sqXmh5HpwwQ-rfs3bj0uRshLp9&sz=w1000",
-                Melee Proficiency "15": "https://drive.google.com/thumbnail?id=1EwJUehneS81-2M_E-2bsYk99LhETi-wo&sz=w1000",
-                Shots Fired "16": "https://drive.google.com/thumbnail?id=14aoY6brfDPJeIm5rNhmFs4ETpt7KExU9&sz=w1000",
-                Speedruns "17": "https://drive.google.com/thumbnail?id=19qAuoXcBR-yFrQo7nl9CTm37e9btXzAx&sz=w1000",
-                Recruitment "18": "https://drive.google.com/thumbnail?id=1Z_PTKqhm_KhGTBPKp3gXWtWh9RBudnOg&sz=w1000",
-                Ghost Ribbon "19: "https://drive.google.com/thumbnail?id=1isttZluvJshq1uYNy-x6AhKAJl2uNFRq&sz=w1000",
-                Soaring Freedom "20": "https://drive.google.com/thumbnail?id=1O9zbxW-bWFS5qcNHaHvGW8tZq0wU3Ode&sz=w1000",
-                Angel of Death "21": "https://drive.google.com/thumbnail?id=1UISfCJIYihKETBg62hT_kipqDuIittw7&sz=w1000",
-                Retirment "22": "https://drive.google.com/thumbnail?id=19ky8jGRMqzn5GGf7xH7azCo0KyoAbxA7&sz=w1000",
-                Stratagem Hero "23": "https://drive.google.com/thumbnail?id=1EdMEerbQKz2TUdPt0k6GMGWkhWfAVcCo&sz=w10",
+                "12": "https://drive.google.com/thumbnail?id=18eWC4BQrqgylIjIgGLfzRpw6Us1ohoKh&sz=w1000", //General Brasch
+                "13": "https://drive.google.com/thumbnail?id=1I4aOtSDdIxO5Z5wqTvWdmxT1-zFeuGrW&sz=w1000", //John Helldiver
+                "14": "https://drive.google.com/thumbnail?id=11K8TM_sqXmh5HpwwQ-rfs3bj0uRshLp9&sz=w1000", //Medic
+                "15": "https://drive.google.com/thumbnail?id=1EwJUehneS81-2M_E-2bsYk99LhETi-wo&sz=w1000", //Melee Proficiency
+                "16": "https://drive.google.com/thumbnail?id=14aoY6brfDPJeIm5rNhmFs4ETpt7KExU9&sz=w1000", //Shots Fired
+                "17": "https://drive.google.com/thumbnail?id=19qAuoXcBR-yFrQo7nl9CTm37e9btXzAx&sz=w1000", //Speedruns
+                "18": "https://drive.google.com/thumbnail?id=1Z_PTKqhm_KhGTBPKp3gXWtWh9RBudnOg&sz=w1000", //Recruitment
+                "19": "https://drive.google.com/thumbnail?id=1isttZluvJshq1uYNy-x6AhKAJl2uNFRq&sz=w1000", //Ghost Ribbon
+                "20": "https://drive.google.com/thumbnail?id=1O9zbxW-bWFS5qcNHaHvGW8tZq0wU3Ode&sz=w1000", //Soaring Freedom
+                "21": "https://drive.google.com/thumbnail?id=1UISfCJIYihKETBg62hT_kipqDuIittw7&sz=w1000", //Angel of Death
+                "22": "https://drive.google.com/thumbnail?id=19ky8jGRMqzn5GGf7xH7azCo0KyoAbxA7&sz=w1000", //Retirment
+                "23": "https://drive.google.com/thumbnail?id=1EdMEerbQKz2TUdPt0k6GMGWkhWfAVcCo&sz=w1000", //Stratagem Hero
 
                 // Helldivers Career Ribons
-                Terminid Career Kills "24": "https://drive.google.com/thumbnail?id=1dtIebf1TCdn_HOlqMasxuMPiwdnG5FF4&sz=w1000",
-                Terminid Kill Record "25": "https://drive.google.com/thumbnail?id=17i7bq4-FgbhGi1fu5OaXohbchSBNHO1z&sz=w1000",
-                Automaton Career Kills "26": "https://drive.google.com/thumbnail?id=1SuJ39whXa5k-XWaukqtJhAA9xkC15TDE&sz=w1000",
-                Automation Kill Record "27": "https://drive.google.com/thumbnail?id=1Wc73phKca4meLg7YmnS8Qu0AvpOOci3L&sz=w1000",
-                Illuminate Career Kills "28": "https://drive.google.com/thumbnail?id=1JShh-WbgYHoRMWAI1nxtlBIm95q1Wmb-&sz=w1000",
-                Illuminate Kill Record "29": "https://drive.google.com/thumbnail?id=10xT1d9Pbx7_QyRoBb22e_7JmVg6rkvBc&sz=w1000",
-                Grenade Kills "30": "https://drive.google.com/thumbnail?id=1J0zrMPSiSGfueYJQxSpGHUy2rc0is44H&sz=w1000",
-                Melee Kills "31": "https://drive.google.com/thumbnail?id=1Nn15CDcJTrRZ1k9UIXJ6So-QszveMf1Y&sz=w1000",
-                Eagle Kills "32": "https://drive.google.com/thumbnail?id=14GjOfICJLr2rykK6aMPXv85ys4bTIj4m&sz=w1000",
+                "24": "https://drive.google.com/thumbnail?id=1dtIebf1TCdn_HOlqMasxuMPiwdnG5FF4&sz=w1000", //Terminid Career Kills
+                "25": "https://drive.google.com/thumbnail?id=17i7bq4-FgbhGi1fu5OaXohbchSBNHO1z&sz=w1000", //Terminid Kill Record
+                "26": "https://drive.google.com/thumbnail?id=1SuJ39whXa5k-XWaukqtJhAA9xkC15TDE&sz=w1000", //Automaton Career Kills
+                "27": "https://drive.google.com/thumbnail?id=1Wc73phKca4meLg7YmnS8Qu0AvpOOci3L&sz=w1000", //Automation Kill Record
+                "28": "https://drive.google.com/thumbnail?id=1JShh-WbgYHoRMWAI1nxtlBIm95q1Wmb-&sz=w1000", //Illuminate Career Kills
+                "29": "https://drive.google.com/thumbnail?id=10xT1d9Pbx7_QyRoBb22e_7JmVg6rkvBc&sz=w1000", //Illuminate Kill Record
+                "30": "https://drive.google.com/thumbnail?id=1J0zrMPSiSGfueYJQxSpGHUy2rc0is44H&sz=w1000", //Grenade Kills
+                "31": "https://drive.google.com/thumbnail?id=1Nn15CDcJTrRZ1k9UIXJ6So-QszveMf1Y&sz=w1000", //Melee Kills
+                "32": "https://drive.google.com/thumbnail?id=14GjOfICJLr2rykK6aMPXv85ys4bTIj4m&sz=w1000", //Eagle Kills
                 Extractions ---
-                Objectives "33": "https://drive.google.com/thumbnail?id=19xkp1a91N60uPqHZXe1QIZ8ykrGs2UBA&sz=w1000",
-                Missions "34": "https://drive.google.com/thumbnail?id=1wSdicSURRkzxsM4qmZfwAbOd4q7Addp5&sz=w1000",
-                Samples "35": "https://drive.google.com/thumbnail?id=1qAvUyf3DZdUi0ILfEuv3hoaWO7ZQdCX4&sz=w1000",
-                lvl 150 1x "36": "https://drive.google.com/thumbnail?id=134EAuzMShoT-UIKNmrhyQ7_48B4zfBEN&sz=w1000",
-                lvl 150 2x "37": "https://drive.google.com/thumbnail?id=1bsxrhqiQjOE2N-4uvW7StierxDEuOijA&sz=w1000",
-                lvl 150 3x "38": "https://drive.google.com/thumbnail?id=1v_fugy8ldUrZl0vTMYSopL_4TVTG6GlU&sz=w1000",
-                lvl 150 4x "39": "https://drive.google.com/thumbnail?id=116Vh8DrWtABEvzwfwJTHP0uGqhSWIFzs&sz=w1000",
-                lvl 150 5x "40": "https://drive.google.com/thumbnail?id=18JdjMxepgGQULNv1jDVs5IJA0I-JyCwM&sz=w1000"
+                "33": "https://drive.google.com/thumbnail?id=19xkp1a91N60uPqHZXe1QIZ8ykrGs2UBA&sz=w1000", //Objectives
+                "34": "https://drive.google.com/thumbnail?id=1wSdicSURRkzxsM4qmZfwAbOd4q7Addp5&sz=w1000", //Missions
+                "35": "https://drive.google.com/thumbnail?id=1qAvUyf3DZdUi0ILfEuv3hoaWO7ZQdCX4&sz=w1000", //Samples
+                "36": "https://drive.google.com/thumbnail?id=134EAuzMShoT-UIKNmrhyQ7_48B4zfBEN&sz=w1000", //lvl 150 1x
+                "37": "https://drive.google.com/thumbnail?id=1bsxrhqiQjOE2N-4uvW7StierxDEuOijA&sz=w1000", //lvl 150 2x
+                "38": "https://drive.google.com/thumbnail?id=1v_fugy8ldUrZl0vTMYSopL_4TVTG6GlU&sz=w1000", //lvl 150 3x
+                "39": "https://drive.google.com/thumbnail?id=116Vh8DrWtABEvzwfwJTHP0uGqhSWIFzs&sz=w1000", //lvl 150 4x
+                "40": "https://drive.google.com/thumbnail?id=18JdjMxepgGQULNv1jDVs5IJA0I-JyCwM&sz=w1000"  //lvl 150 5x
                 */
             };
 
@@ -341,6 +338,37 @@
             a.href = dataURL;
             a.download = 'canvas-download.png';
             a.click();
+        }
+        function resizeFullBox() {
+            //scale = ((window.innerHeight-document.getElementById("theDiv").offsetHeight-65)/2796);
+
+            /*if (window.innerHeight-document.getElementById("theDiv").offsetHeight-65 > window.innerWidth) {
+                scale = (window.innerWidth/2236);
+            }
+            else if (window.innerHeight < window.screen.width) {
+                scale = ((window.innerHeight-document.getElementById("theDiv").offsetHeight-65)/2796);
+            } */
+            //2796/2236
+            if ((window.innerHeight-document.getElementById("theDiv").offsetHeight-70) > (window.innerWidth-40)*2796/2236) {
+                scale = ((window.innerWidth-40)/2236);
+                console.log("scaling by width");
+            }
+            if ((window.innerHeight-document.getElementById("theDiv").offsetHeight-70) <= (window.innerWidth-40)*2796/2236) { 
+                scale = ((window.innerHeight-document.getElementById("theDiv").offsetHeight-70)/2796);
+                console.log("scaling by height");
+            }
+
+            console.log(scale);
+
+            document.getElementById('fullBox').width = 2236*scale;
+            document.getElementById('fullBox').height = 2796*scale;
+
+            let canvas = document.getElementById('fullBox');
+            let ctx = canvas.getContext('2d');
+
+            //drawImage(img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
+            ctx.drawImage(selectedBox, 0, 0, selectedBox.width, selectedBox.height, 0, 0, 2236*scale, 2796*scale);
+            ctx.drawImage(selectedRank, 0, 0, selectedRank.width, selectedRank.height, (2123-(selectedRankIconWidth/2))*scale, (239-selectedRankIconHeight)*scale, selectedRankIconWidth*scale, selectedRankIconHeight*scale);
         }
     </script>
 </body>
