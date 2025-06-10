@@ -535,7 +535,8 @@
             //document.getElementById("placehere").appendChild(elem);
         }
         function downloadShadowBox() {
-            let canvas = document.getElementById("displayBox");
+            //let canvas = document.getElementById("displayBox");
+            let canvas = document.getElementById("fullBox");
             let dataURL = canvas.toDataURL("image/png");
             let a = document.createElement('a');
             a.href = dataURL;
