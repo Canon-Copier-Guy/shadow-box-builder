@@ -204,26 +204,26 @@
 
             const ranks = {
                 "1":  "/Ranks/0_Cadet.png", // Cadet
-                "2":  "https://drive.google.com/thumbnail?id=1KiRvba5FrOM4exPUMAsHEr9kcqdAykwy&sz=w1000", // Space Cadet
-                "3":  "https://drive.google.com/thumbnail?id=1-3vBKEyGa-jHYsIXyaZngMpoSoaGVOpb&sz=w1000", // Sergeant
-                "4":  "https://drive.google.com/thumbnail?id=14r7VqsJ3ndl6KT7Dlbzrzpho1Juwxdxj&sz=w1000", // Master Sergeant
-                "5":  "https://drive.google.com/thumbnail?id=1Ff3cEV4gysdQXMtq5UfPEK4spNxzW5Cj&sz=w1000", // Chief
-                "6":  "https://drive.google.com/thumbnail?id=1ybhHAnjy552GEOeVa40bVYuoJO894Z_e&sz=w1000", // Space Chief Prime
-                "7":  "https://drive.google.com/thumbnail?id=19buoWNU9jO4-m5anloRpPMgj88VNtLOK&sz=w1000", // Death Captain
-                "8":  "https://drive.google.com/thumbnail?id=1yTLE97dMExQ3w8Fz_AWRqHxFPSrXJw-C&sz=w1000", // Marshal
-                "9":  "https://drive.google.com/thumbnail?id=1o27pV8sTLtUh2uax3Y6S-AS23AeNHbo5&sz=w1000", // Star Marshal
-                "10": "https://drive.google.com/thumbnail?id=1lTzFjvi0vH6ySDPmlPdPDXz0BKiZRzWi&sz=w1000", // Admiral
-                "11": "https://drive.google.com/thumbnail?id=18b5w2SnQhTlQbRKNxmAddJ7NaT-WcKmK&sz=w1000", // Skull Admiral
-                "12": "https://drive.google.com/thumbnail?id=1YdtlRBGyUzgjX8Y6KR0MPFKPm2prGHIx&sz=w1000", // Fleet Admiral
-                "13": "https://drive.google.com/thumbnail?id=1F8LzqRsJlcQyeEnOi7FC9DNe-QxsRE2z&sz=w1000", // Admirable Admiral
-                "14": "https://drive.google.com/thumbnail?id=1jPRmj_OhZtpKLJN3y6v_8Ttdfz-28eVB&sz=w1000", // Commander
-                "15": "https://drive.google.com/thumbnail?id=1uduTPgLRmkywYVfN1FL44b6rsbwLCTd1&sz=w1000", // Galactic Commander
-                "16": "https://drive.google.com/thumbnail?id=1dPc4xasxUXrPYjU6mdYOBJ9GjhyxTMC6&sz=w1000", // Hell Commander
-                "17": "https://drive.google.com/thumbnail?id=1niAaD6gWHjX-Af-rW3pBVeQ1ZsNi8ucM&sz=w1000", // General
-                "18": "https://drive.google.com/thumbnail?id=1Y5sLhTGCnAk5CPrISK4GNHjoKCm0DFUq&sz=w1000", // 5-Star General
-                "19": "https://drive.google.com/thumbnail?id=10x-ed2_-KohsWQQePYTIOWNzV4gU8JDM&sz=w1000", // 10-Star General
-                "20": "https://drive.google.com/thumbnail?id=1NhnPYAX7TDwuJS3iyd4xsYs1zhuqqWvN&sz=w1000", // Private
-                "21": "https://drive.google.com/thumbnail?id=1bBqu-Y7xDRaxWAc3glg2_r9zVuPcr796&sz=w1000"  // Super Private
+                "2":  "/Ranks/5_Space Cadet.png", // Space Cadet
+                "3":  "/Ranks/10_Sergeant.png", // Sergeant
+                "4":  "/Ranks/15_Master Sergeant.png", // Master Sergeant
+                "5":  "/Ranks/20_Chief.png", // Chief
+                "6":  "/Ranks/25_Space Chief Prime.png", // Space Chief Prime
+                "7":  "/Ranks/30_Death Captain.png", // Death Captain
+                "8":  "/Ranks/35_Marshal.png", // Marshal
+                "9":  "/Ranks/40_Star Marshal.png", // Star Marshal
+                "10": "/Ranks/45_Admiral.png", // Admiral
+                "11": "/Ranks/50_Skull Admiral.png", // Skull Admiral
+                "12": "/Ranks/60_Fleet Admiral.png", // Fleet Admiral
+                "13": "/Ranks/70_Admirable_Admiral", // Admirable Admiral
+                "14": "/Ranks/80_Commander.png", // Commander
+                "15": "/Ranks/90_Galactic Commander.png", // Galactic Commander
+                "16": "/Ranks/100_Hell Commander.png", // Hell Commander
+                "17": "/Ranks/110_General.png", // General
+                "18": "/Ranks/120_5-Star General.png", // 5-Star General
+                "19": "/Ranks/130_10-Star General.png", // 10-Star General
+                "20": "/Ranks/140_Private.png", // Private
+                "21": "/Ranks/150_Super Private.png"  // Super Private
             };
 
             rankIconWidths = {
@@ -364,6 +364,12 @@
 
             //Draw text
             ctx.fillText(name, (1118*scale)-textWidth/2, (557*scale)+textHeight/4);
+            
+            //canvas = document.getElementById('fullBox');
+            //ctx = canvas.getContext('2d');
+
+            //Draw text
+            //ctx.fillText(name, (1118*scale)-textWidth/2, (557*scale)+textHeight/4);
         }
         function updateMedals() {
             const dropdown = document.getElementById('MedalsDropdown');
