@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <link href='https://fonts.googleapis.com/css?family=Ubuntu Mono' rel='stylesheet'>
+    <!-- <link href="https://fonts.cdnfonts.com/css/race1-brannt-chiseled-ncv" rel="stylesheet"> -->
     <meta charset="UTF-8">
     <title>HAC Shadowbox Creator</title>
     <link rel="icon" href="https://cdn-longterm.mee6.xyz/plugins/embeds/images/1309714539331325952/55854afc13258498d8efa95fdad3a0e3b54052772ab4a4a9917ee8f426d03717.png">
@@ -12,27 +13,26 @@
             padding: 10px;
         }
 
-        .fullBox {
+        .displayBox {
             position: relative;
             margin: auto;
         }
-        
-        /* h1 {
-	        text-shadow: 0px 1px 1px #4d4d4d;
-	        color: #222;
-	        font: 80px 'LeagueGothicRegular';
-        } */
+
+        /* font-family: 'RACE1 Brannt Chiseled NCV', sans-serif;
+        font-family: 'RACE1 Brannt NCV', sans-serif;
+        font-family: 'RACE1 Brannt Plus Chiseled NCV', sans-serif;
+        font-family: 'RACE1 Brannt Plus NCV', sans-serif; */
     </style>
 </head>
-<body onresize="resizeFullBox()">
-    <div id="theDiv">
+<body onresize="resizeDisplayBox()">
+    <Div id="theDiv">
     <h1>Start Making your Shadow Box!</h1>
-    <select id="boxDropdown" onchange="updateBox()">
+    <select id="backgroundDropdown" onchange="updateBackground()">
         <option value="">-- Select Detachment --</option>
-        <option value="1">Hazard Company</option>
-        <option value="2">Dread Reapers</option>
-        <option value="3">Death Company</option>
-        <option value="4">Phantom Vanguard</option>
+        <option value="https://drive.google.com/thumbnail?id=1AiH1V7yFwuuserY22kprdXPvn3d1u7f8&sz=w1000">Hazard Company</option>
+        <option value="https://drive.google.com/thumbnail?id=1ZdQmwUW_8HqEDaJcu6PRXSQbdRVxW3q_&sz=w1000">Dread Reapers</option>
+        <option value="https://drive.google.com/thumbnail?id=1_Shqn6Rl22ZHc4sNCNOCVoPXeWMD2Z0Q&sz=w1000">Death Company</option>
+        <option value="https://drive.google.com/thumbnail?id=12I5X1LLgVuqylQ-CFYxJu1U5dkQoU7om&sz=w1000">Phantom Vanguard</option>
     </select>
 
     <select id="rankDropdown" onchange="updateRank()">
@@ -60,15 +60,62 @@
         <option value="21">Super Private</option>
     </select>
 
-    <select id="ribbonsDropdown" onchange="updateRibbons()">
+    <select multiple id="ribbonsDropdown" onchange="updateRibbons()">
         <option value="">-- Select Ribbon(s) --</option>
-        <option value="1">Offensive Crusades</option>
-        <option value="2">Defensive Crusades</option>
-        <option value="3">Outstanding Unit</option>
-        <option value="4">Choohe Crusade</option>
+        <option value="https://drive.google.com/thumbnail?id=11ky11IsKxHttkMqMPdb7BahsFvc0UfyI&sz=w1000">Offensive Crusades</option>
+        <option value="https://drive.google.com/thumbnail?id=1SolWu4KTG9GJDD7dWiB4lql-luyRZd-J&sz=w1000">Defensive Crusade</option>
+        <option value="https://drive.google.com/thumbnail?id=1zzRpddSC0jAC8likai_peilo1r7TZBBD&sz=w1000">Outstanding Unit</option>
+        <option value="https://drive.google.com/thumbnail?id=18n9wE16Nc-KyZNTwCVqW-XjX80TTqPnr&sz=w1000">Choohe Crusade</option>
+        <option value="https://drive.google.com/thumbnail?id=1q4bicgFAxe-1j5I3obzfmZe2NuYZE7QE&sz=w1000">Genesis Crusade</option>
+        <option value="https://drive.google.com/thumbnail?id=1vYvj0Gtts7dfXizYcmPBKlIzb8y98m_x&sz=w1000">Jungle Hero Strike</option>
+        <option value="https://drive.google.com/thumbnail?id=15SEMhYvPXze6_V0u-5xI55MPP3NgRWlI&sz=w1000">Silent Bastion Strike</option>
+        <option value="https://drive.google.com/thumbnail?id=1A8Mh75_KIhhaysc9bfVUHApBtWP3F9_7&sz=w1000">Gloom Crusade</option>
+        <option value="https://drive.google.com/thumbnail?id=1qszcuMSDZku8OFvXtFDuz-2ZaO3gmL9U&sz=w1000">Blitzdiver Event</option>
+        <option value="https://drive.google.com/thumbnail?id=1veO9ffVU_1S0YWcwrIyUPX0rYpkyg8ru&sz=w1000">Dio's Duck Divers </option>
+        <option value="https://drive.google.com/thumbnail?id=1kcNSfhuZWIGH0a09SnLZT0oWiuy-7kQn&sz=w1000">Sporeburn Strike</option>
+        <option value="https://drive.google.com/thumbnail?id=18eWC4BQrqgylIjIgGLfzRpw6Us1ohoKh&sz=w1000">General Brasch</option>
+        <option value="https://drive.google.com/thumbnail?id=1I4aOtSDdIxO5Z5wqTvWdmxT1-zFeuGrW&sz=w1000">John Helldiver</option>
+        <option value="https://drive.google.com/thumbnail?id=11K8TM_sqXmh5HpwwQ-rfs3bj0uRshLp9&sz=w1000">Medic</option>
+        <option value="https://drive.google.com/thumbnail?id=1EwJUehneS81-2M_E-2bsYk99LhETi-wo&sz=w1000">Melee Proficiency</option>
+        <option value="https://drive.google.com/thumbnail?id=14aoY6brfDPJeIm5rNhmFs4ETpt7KExU9&sz=w1000">Shots Fired</option>
+        <option value="https://drive.google.com/thumbnail?id=19qAuoXcBR-yFrQo7nl9CTm37e9btXzAx&sz=w1000">Speedruns</option>
+        <option value="https://drive.google.com/thumbnail?id=1Z_PTKqhm_KhGTBPKp3gXWtWh9RBudnOg&sz=w1000">Recruitment</option>
+        <option value="https://drive.google.com/thumbnail?id=1isttZluvJshq1uYNy-x6AhKAJl2uNFRq&sz=w1000">Ghost Ribbon</option>
+        <option value="https://drive.google.com/thumbnail?id=1O9zbxW-bWFS5qcNHaHvGW8tZq0wU3Ode&sz=w1000">Soaring Freedom</option>
+        <option value="https://drive.google.com/thumbnail?id=1UISfCJIYihKETBg62hT_kipqDuIittw7&sz=w1000">Angel of Death</option>
+        <option value="https://drive.google.com/thumbnail?id=19ky8jGRMqzn5GGf7xH7azCo0KyoAbxA7&sz=w1000">Retirment</option>
+        <option value="https://drive.google.com/thumbnail?id=1EdMEerbQKz2TUdPt0k6GMGWkhWfAVcCo&sz=w1000">Stratagem Hero</option>
+        <option value="https://drive.google.com/thumbnail?id=1dtIebf1TCdn_HOlqMasxuMPiwdnG5FF4&sz=w1000">Terminid Career Kills</option>
+        <option value="https://drive.google.com/thumbnail?id=17i7bq4-FgbhGi1fu5OaXohbchSBNHO1z&sz=w1000">Terminid Kill Record</option>
+        <option value="https://drive.google.com/thumbnail?id=1SuJ39whXa5k-XWaukqtJhAA9xkC15TDE&sz=w1000">Automaton Career Kills</option>
+        <option value="https://drive.google.com/thumbnail?id=1Wc73phKca4meLg7YmnS8Qu0AvpOOci3L&sz=w1000">Automation Kill Record</option>
+        <option value="https://drive.google.com/thumbnail?id=1JShh-WbgYHoRMWAI1nxtlBIm95q1Wmb-&sz=w1000">Illuminate Career Kills</option>
+        <option value="https://drive.google.com/thumbnail?id=10xT1d9Pbx7_QyRoBb22e_7JmVg6rkvBc&sz=w1000">Illuminate Kill Record</option>
+        <option value="https://drive.google.com/thumbnail?id=1J0zrMPSiSGfueYJQxSpGHUy2rc0is44H&sz=w1000">Grenade Kills</option>
+        <option value="https://drive.google.com/thumbnail?id=1Nn15CDcJTrRZ1k9UIXJ6So-QszveMf1Y&sz=w1000">Melee Kills</option>
+        <option value="https://drive.google.com/thumbnail?id=14GjOfICJLr2rykK6aMPXv85ys4bTIj4m&sz=w1000">Eagle Kills</option>
+        <!-- Extractions would go here (when it's ready)-->
+        <option value="https://drive.google.com/thumbnail?id=19xkp1a91N60uPqHZXe1QIZ8ykrGs2UBA&sz=w1000">Objectives</option>
+        <option value="https://drive.google.com/thumbnail?id=1wSdicSURRkzxsM4qmZfwAbOd4q7Addp5&sz=w1000">Missions</option>
+        <option value="https://drive.google.com/thumbnail?id=1qAvUyf3DZdUi0ILfEuv3hoaWO7ZQdCX4&sz=w1000">Samples</option>
+        <option value="https://drive.google.com/thumbnail?id=134EAuzMShoT-UIKNmrhyQ7_48B4zfBEN&sz=w1000">lvl 150 1x</option>
+        <option value="https://drive.google.com/thumbnail?id=1bsxrhqiQjOE2N-4uvW7StierxDEuOijA&sz=w1000">lvl 150 2x</option>
+        <option value="https://drive.google.com/thumbnail?id=1v_fugy8ldUrZl0vTMYSopL_4TVTG6GlU&sz=w1000">lvl 150 3x</option>
+        <option value="https://drive.google.com/thumbnail?id=116Vh8DrWtABEvzwfwJTHP0uGqhSWIFzs&sz=w1000">lvl 150 4x</option>
+        <option value="https://drive.google.com/thumbnail?id=18JdjMxepgGQULNv1jDVs5IJA0I-JyCwM&sz=w1000">lvl 150 5x</option>
     </select>
 
-    <input type="text" placeholder="Insert number and Callsign">
+    <select multiple id="MedalsDropdown" onchange="updateMedals()">
+        <option value="">-- Select Medals(s) --</option>
+        <option value="1">Terminid Blitz</option>
+        <option value="2">Offensive Offensive</option>
+        <option value="3">Defensive Crusade</option>
+        <option value="4">Choohe Crusade</option>
+        <option value="5">Genesis Crusade</option>
+        <option value="6">Gloom Crusade</option>
+    </select>
+
+    <input id="numberCallsign" type="text" placeholder="Insert number and Callsign" onchange="updateName()">
 
     <input id="downloadButton" type="button" value="Download Shadow Box" onclick="downloadShadowBox();" />
 
@@ -76,53 +123,79 @@
 
     </div>
 
-    <canvas class="fullBox" id="fullBox"></canvas>
+    <canvas class="displayBox" id="displayBox"></canvas>
+
+    <canvas id="fullBox" hidden></canvas>
 
     <script>
         var scale = 0;
 
         if ((window.innerHeight-document.getElementById("theDiv").offsetHeight-60) > (window.innerWidth-40)*2796/2236) {
             scale = ((window.innerWidth-40)/2236);
-            console.log("scaling by width");
         }
         if ((window.innerHeight-document.getElementById("theDiv").offsetHeight-60) <= (window.innerWidth-40)*2796/2236) { 
             scale = ((window.innerHeight-document.getElementById("theDiv").offsetHeight-60)/2796);
-            console.log("scaling by height");
         }
-        
+
         //const scale = 0.5;
-        let selectedRank = "";
+        var selectedRank;
         var selectedRankIconWidth;
         var selectedRankIconHeight;
-        let selectedBox = "";
+        var selectedMedalWidth;
+        var selectedMedalHeight;
+        var selectedBackground;
 
-        document.getElementById('fullBox').width = 2236*scale;
-        document.getElementById('fullBox').height = 2796*scale;
+        var name;
+        var textWidth;
+        var textHeight;
 
-        function updateBox() {
-            const dropdown = document.getElementById('boxDropdown');
-            const box = document.getElementById('selectedBox');
+        document.getElementById('displayBox').style.width = 2236*scale;
+        document.getElementById('displayBox').style.height = 2796*scale;
 
-            
-            const boxes = {
-                "1": "https://drive.google.com/thumbnail?id=1AiH1V7yFwuuserY22kprdXPvn3d1u7f8&sz=w1000",
-                "2": "https://drive.google.com/thumbnail?id=1ZdQmwUW_8HqEDaJcu6PRXSQbdRVxW3q_&sz=w1000",
-                "3": "https://drive.google.com/thumbnail?id=1_Shqn6Rl22ZHc4sNCNOCVoPXeWMD2Z0Q&sz=w1000",
-                "4": "https://drive.google.com/thumbnail?id=12I5X1LLgVuqylQ-CFYxJu1U5dkQoU7om&sz=w1000"
-            };
+        document.getElementById('displayBox').width = 2236*scale;
+        document.getElementById('displayBox').height = 2796*scale;
 
-            selectedBox = new Image();
-            selectedBox.src = boxes[dropdown.value];
+        document.getElementById('fullBox').width = 2236;
+        document.getElementById('fullBox').height = 2796;
+
+        function updateBackground() {
+            const dropdown = document.getElementById('backgroundDropdown');
+            const background = document.getElementById('selectedBackground');
+
+            selectedBackground = new Image();
+            selectedBackground.src = dropdown.value;
 
             // Wait till image is loaded.
-            selectedBox.onload = function () {
-                // Create a canvas context.
-                let canvas = document.getElementById('fullBox');
+            selectedBackground.onload = function () {
+                // Get Context for canvas to display to the user and draw it
+                let canvas = document.getElementById('displayBox');
                 let ctx = canvas.getContext('2d');
 
                 //drawImage(img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
-                ctx.drawImage(selectedBox, 0, 0, selectedBox.width, selectedBox.height, 0, 0, 2236*scale, 2796*scale);
+                //Draw background
+                ctx.drawImage(selectedBackground, 0, 0, selectedBackground.width, selectedBackground.height, 0, 0, 2236*scale, 2796*scale);
+                //Draw rank icon
                 ctx.drawImage(selectedRank, 0, 0, selectedRank.width, selectedRank.height, (2123-(selectedRankIconWidth/2))*scale, (239-selectedRankIconHeight)*scale, selectedRankIconWidth*scale, selectedRankIconHeight*scale);
+                //Draw medal
+                //ctx.drawImage(img, 0, 0, img.width, img.height, (215-(selectedMedalWidth/2))*scale, 775*scale, selectedMedalWidth*scale, 512*scale);
+                //Draw ribbon
+                //ctx.drawImage(img, 0, 0, img.width, img.height, 1118*scale, 775*scale, 312*scale, 75*scale);
+                //Draw text
+                ctx.fillText(name, (1118*scale)-textWidth/2, (557*scale)+textHeight/4);
+
+                // Get context for full resolution canvas and draw it
+                canvas = document.getElementById('fullBox');
+                ctx = canvas.getContext('2d');
+
+                //drawImage(img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
+                //Draw background
+                ctx.drawImage(selectedBackground, 0, 0, selectedBackground.width, selectedBackground.height, 0, 0, 2236, 2796);
+                //Draw rank icon
+                ctx.drawImage(selectedRank, 0, 0, selectedRank.width, selectedRank.height, (2123-(selectedRankIconWidth/2)), (239-selectedRankIconHeight), selectedRankIconWidth, selectedRankIconHeight);
+                //Draw medal
+                //ctx.drawImage(img, 0, 0, img.width, img.height, (215-(selectedMedalWidth/2)), 775, selectedMedalWidth, 512);
+                //Draw ribbon
+                //ctx.drawImage(img, 0, 0, img.width, img.height, 1118, 775, 312, 75);
             }
         }
         function updateRank() {
@@ -142,7 +215,7 @@
                 "10": "https://drive.google.com/thumbnail?id=1lTzFjvi0vH6ySDPmlPdPDXz0BKiZRzWi&sz=w1000", // Admiral
                 "11": "https://drive.google.com/thumbnail?id=18b5w2SnQhTlQbRKNxmAddJ7NaT-WcKmK&sz=w1000", // Skull Admiral
                 "12": "https://drive.google.com/thumbnail?id=1YdtlRBGyUzgjX8Y6KR0MPFKPm2prGHIx&sz=w1000", // Fleet Admiral
-                "13": "https://drive.google.com/thumbnail?id=1YdtlRBGyUzgjX8Y6KR0MPFKPm2prGHIx&sz=w1000", // Admirable Admiral
+                "13": "https://drive.google.com/thumbnail?id=1F8LzqRsJlcQyeEnOi7FC9DNe-QxsRE2z&sz=w1000", // Admirable Admiral
                 "14": "https://drive.google.com/thumbnail?id=1jPRmj_OhZtpKLJN3y6v_8Ttdfz-28eVB&sz=w1000", // Commander
                 "15": "https://drive.google.com/thumbnail?id=1uduTPgLRmkywYVfN1FL44b6rsbwLCTd1&sz=w1000", // Galactic Commander
                 "16": "https://drive.google.com/thumbnail?id=1dPc4xasxUXrPYjU6mdYOBJ9GjhyxTMC6&sz=w1000", // Hell Commander
@@ -166,7 +239,7 @@
                 "10": 154, // Admiral
                 "11": 154, // Skull Admiral
                 "12": 154, // Fleet Admiral
-                "13": 154, // Admirable Admiral (177 for realz, don't have actial icon)
+                "13": 185, // Admirable Admiral (177 for realz, don't have actial icon)
                 "14": 154, // Commander
                 "15": 177, // Galactic Commander
                 "16": 154, // Hell Commander
@@ -209,72 +282,119 @@
 
             // Wait till image is loaded.
             selectedRank.onload = function () {
-                // Create a canvas context.
-                let canvas = document.getElementById('fullBox');
+                // Get Context for canvas to display to the user and draw it
+                let canvas = document.getElementById('displayBox');
                 let ctx = canvas.getContext('2d');
 
                 //drawImage(img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
-                ctx.drawImage(selectedBox, 0, 0, selectedBox.width, selectedBox.height, 0, 0, 2236*scale, 2796*scale);
+                //Draw background
+                ctx.drawImage(selectedBackground, 0, 0, selectedBackground.width, selectedBackground.height, 0, 0, 2236*scale, 2796*scale);
+                //Draw rank icon
                 ctx.drawImage(selectedRank, 0, 0, selectedRank.width, selectedRank.height, (2123-(selectedRankIconWidth/2))*scale, (239-selectedRankIconHeight)*scale, selectedRankIconWidth*scale, selectedRankIconHeight*scale);
+                //Draw medal
+                //ctx.drawImage(img, 0, 0, img.width, img.height, (215-(selectedMedalWidth/2))*scale, 775*scale, selectedMedalWidth*scale, 512*scale);
+                //Draw ribbon
+                //ctx.drawImage(img, 0, 0, img.width, img.height, 1118*scale, 775*scale, 312*scale, 75*scale);
+                //Draw text
+                ctx.fillText(name, (1118*scale)-textWidth/2, (557*scale)+textHeight/4);
+
+                // Get context for full resolution canvas and draw it
+                canvas = document.getElementById('fullBox');
+                ctx = canvas.getContext('2d');
+
+                //drawImage(img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
+                //Draw background
+                ctx.drawImage(selectedBackground, 0, 0, selectedBackground.width, selectedBackground.height, 0, 0, 2236, 2796);
+                //Draw rank icon
+                ctx.drawImage(selectedRank, 0, 0, selectedRank.width, selectedRank.height, (2123-(selectedRankIconWidth/2)), (239-selectedRankIconHeight), selectedRankIconWidth, selectedRankIconHeight);
+                //Draw medal
+                //ctx.drawImage(img, 0, 0, img.width, img.height, (215-(selectedMedalWidth/2)), 775, selectedMedalWidth, 512);
+                //Draw ribbon
+                //ctx.drawImage(img, 0, 0, img.width, img.height, 1118, 775, 312, 75);
+                //Draw text
+                //ctx.fillText(name, (1118)-textWidth/2, (557)+textHeight/4);
             }
         }
-        function updateRibbons() {
-            const dropdown = document.getElementById('ribbonsDropdown');
-            const ribbons = document.getElementById('selectedRibbons');
+        function updateName() {
+            let canvas = document.getElementById('displayBox');
+            let ctx = canvas.getContext('2d');
+            name = document.getElementById('numberCallsign').value.toUpperCase();
+            let nameLength = name.length;
 
-            const ribbonz = {
-                "1": "https://drive.google.com/thumbnail?id=11ky11IsKxHttkMqMPdb7BahsFvc0UfyI&sz=w1000",
-                "2": "https://drive.google.com/thumbnail?id=1SolWu4KTG9GJDD7dWiB4lql-luyRZd-J&sz=w1000",
-                "3": "https://drive.google.com/thumbnail?id=1zzRpddSC0jAC8likai_peilo1r7TZBBD&sz=w1000",
-                "4": "https://drive.google.com/thumbnail?id=18n9wE16Nc-KyZNTwCVqW-XjX80TTqPnr&sz=w1000"
-                /*
+            // Measure the width of the text
+            /*textHeight = 130*scale;
+            ctx.font = (textHeight+'px Ubuntu Mono');
+            textWidth = ctx.measureText(name).width;*/
+
+            textHeight = Math.round(130*scale);
+            ctx.font = (textHeight+'px Ubuntu Mono');
+            //ctx.font = (textHeight+'RACE1 Brannt Chiseled NCV');
+            //ctx.color = #fcc312;
+            ctx.fillStyle = "gold";
+            ctx.shadowColor = "black";
+            ctx.shadowOffsetX = 5;
+            ctx.shadowOffsetY = 5;
+            ctx.shadowBlur = 10;
+            textWidth = ctx.measureText(name).width;
+
+            // Calculate the height of the text based on font size and line height
+
+            if (textWidth >= 642*scale) {
+                //textWidth = ctx.measureText(name).width;
+                textHeight = Math.round(((642*scale)/nameLength)*2);
+                ctx.font = (textHeight+'px Ubuntu Mono');
+                //ctx.font = (textHeight+'RACE1 Brannt Chiseled NCV');
+                textWidth = 642*scale;
+            }
+            else {
+                ctx.font = (textHeight+'px Ubuntu Mono');
+                //ctx.font = (textHeight+'RACE1 Brannt Chiseled NCV');
+                textWidth = ctx.measureText(name).width;
+            }
+
+            console.log(scale);
+            console.log(textHeight);
+            console.log(textWidth);
+
+            //drawImage(img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
+            //Draw background
+            ctx.drawImage(selectedBackground, 0, 0, selectedBackground.width, selectedBackground.height, 0, 0, 2236*scale, 2796*scale);
+            //Draw rank icon
+            ctx.drawImage(selectedRank, 0, 0, selectedRank.width, selectedRank.height, (2123-(selectedRankIconWidth/2))*scale, (239-selectedRankIconHeight)*scale, selectedRankIconWidth*scale, selectedRankIconHeight*scale);
+
+            //Draw text
+            ctx.fillText(name, (1118*scale)-textWidth/2, (557*scale)+textHeight/4);
+        }
+        function updateMedals() {
+            const dropdown = document.getElementById('MedalsDropdown');
+            const medal = document.getElementById('selectedMedals');
+
+            const medals = {
                 //Strike & Crusade Ribbons
-                "1": "https://drive.google.com/thumbnail?id=11ky11IsKxHttkMqMPdb7BahsFvc0UfyI&sz=w1000",  //Offensive Crusades
-                "2": "https://drive.google.com/thumbnail?id=1SolWu4KTG9GJDD7dWiB4lql-luyRZd-J&sz=w1000",  //Defensive Crusade
-                "3": "https://drive.google.com/thumbnail?id=1zzRpddSC0jAC8likai_peilo1r7TZBBD&sz=w1000",  //Outstanding Unit
-                "4": "https://drive.google.com/thumbnail?id=18n9wE16Nc-KyZNTwCVqW-XjX80TTqPnr&sz=w1000",  //Choohe Crusade
-                "5": "https://drive.google.com/thumbnail?id=1q4bicgFAxe-1j5I3obzfmZe2NuYZE7QE&sz=w1000",  //Genesis Crusade
-                "6": "https://drive.google.com/thumbnail?id=1vYvj0Gtts7dfXizYcmPBKlIzb8y98m_x&sz=w1000",  //Jungle Hero Strike
-                "7": "https://drive.google.com/thumbnail?id=15SEMhYvPXze6_V0u-5xI55MPP3NgRWlI&sz=w1000",  //Silent Bastion Strike
-                "8": "https://drive.google.com/thumbnail?id=1A8Mh75_KIhhaysc9bfVUHApBtWP3F9_7&sz=w1000",  //Gloom Crusade
-                "9": "https://drive.google.com/thumbnail?id=1qszcuMSDZku8OFvXtFDuz-2ZaO3gmL9U&sz=w1000",  //Blitzdiver Event
-                "10": "https://drive.google.com/thumbnail?id=1veO9ffVU_1S0YWcwrIyUPX0rYpkyg8ru&sz=w1000", //Dio's Duck Divers 
-                "11": "https://drive.google.com/thumbnail?id=1kcNSfhuZWIGH0a09SnLZT0oWiuy-7kQn&sz=w1000", //Sporeburn Strike
+                "1": "https://drive.google.com/thumbnail?id=1FpylY_tA7L6_rOvEnRlHUQu8VARUUVEj&sz=w1000", //Terminid Blitz
+                "2": "https://drive.google.com/thumbnail?id=1r2th-Es94lUIfVnYoUfn30JKf-c8skoK&sz=w1000", //Offensive Crusade
+                "3": "https://drive.google.com/thumbnail?id=1zl4bXJj6V85CRgxmKgRWQfecuDFAtjHE&sz=w1000", //Defensive Crusade
+                "4": "https://drive.google.com/thumbnail?id=1atERb9LW6OTf2iEWD5JOCXCzFiZiwI7K&sz=w1000", //Choohe Crusade
+                "5": "https://drive.google.com/thumbnail?id=17zqikpOBZNZLe0-edqf7D5rn3qqaUljp&sz=w1000", //Genesis Crusade
+                "6": "https://drive.google.com/thumbnail?id=1Hn087FXvTY3cjP0MzUlrBXKUr2y_edyq&sz=w1000"  //Gloom Crusade
+            };
 
-                //HAC Ribbons
-                "12": "https://drive.google.com/thumbnail?id=18eWC4BQrqgylIjIgGLfzRpw6Us1ohoKh&sz=w1000", //General Brasch
-                "13": "https://drive.google.com/thumbnail?id=1I4aOtSDdIxO5Z5wqTvWdmxT1-zFeuGrW&sz=w1000", //John Helldiver
-                "14": "https://drive.google.com/thumbnail?id=11K8TM_sqXmh5HpwwQ-rfs3bj0uRshLp9&sz=w1000", //Medic
-                "15": "https://drive.google.com/thumbnail?id=1EwJUehneS81-2M_E-2bsYk99LhETi-wo&sz=w1000", //Melee Proficiency
-                "16": "https://drive.google.com/thumbnail?id=14aoY6brfDPJeIm5rNhmFs4ETpt7KExU9&sz=w1000", //Shots Fired
-                "17": "https://drive.google.com/thumbnail?id=19qAuoXcBR-yFrQo7nl9CTm37e9btXzAx&sz=w1000", //Speedruns
-                "18": "https://drive.google.com/thumbnail?id=1Z_PTKqhm_KhGTBPKp3gXWtWh9RBudnOg&sz=w1000", //Recruitment
-                "19": "https://drive.google.com/thumbnail?id=1isttZluvJshq1uYNy-x6AhKAJl2uNFRq&sz=w1000", //Ghost Ribbon
-                "20": "https://drive.google.com/thumbnail?id=1O9zbxW-bWFS5qcNHaHvGW8tZq0wU3Ode&sz=w1000", //Soaring Freedom
-                "21": "https://drive.google.com/thumbnail?id=1UISfCJIYihKETBg62hT_kipqDuIittw7&sz=w1000", //Angel of Death
-                "22": "https://drive.google.com/thumbnail?id=19ky8jGRMqzn5GGf7xH7azCo0KyoAbxA7&sz=w1000", //Retirment
-                "23": "https://drive.google.com/thumbnail?id=1EdMEerbQKz2TUdPt0k6GMGWkhWfAVcCo&sz=w1000", //Stratagem Hero
+            medalWidths = {
+                "1":  370, //Terminid Blitz
+                "2":  323, //Offensive Crusade
+                "3":  323, //Defensive Crusade
+                "4":  341, //Choohe Crusade
+                "5":  320, //Genesis Crusade
+                "6":  325, //Gloom Crusade
+            };
 
-                // Helldivers Career Ribons
-                "24": "https://drive.google.com/thumbnail?id=1dtIebf1TCdn_HOlqMasxuMPiwdnG5FF4&sz=w1000", //Terminid Career Kills
-                "25": "https://drive.google.com/thumbnail?id=17i7bq4-FgbhGi1fu5OaXohbchSBNHO1z&sz=w1000", //Terminid Kill Record
-                "26": "https://drive.google.com/thumbnail?id=1SuJ39whXa5k-XWaukqtJhAA9xkC15TDE&sz=w1000", //Automaton Career Kills
-                "27": "https://drive.google.com/thumbnail?id=1Wc73phKca4meLg7YmnS8Qu0AvpOOci3L&sz=w1000", //Automation Kill Record
-                "28": "https://drive.google.com/thumbnail?id=1JShh-WbgYHoRMWAI1nxtlBIm95q1Wmb-&sz=w1000", //Illuminate Career Kills
-                "29": "https://drive.google.com/thumbnail?id=10xT1d9Pbx7_QyRoBb22e_7JmVg6rkvBc&sz=w1000", //Illuminate Kill Record
-                "30": "https://drive.google.com/thumbnail?id=1J0zrMPSiSGfueYJQxSpGHUy2rc0is44H&sz=w1000", //Grenade Kills
-                "31": "https://drive.google.com/thumbnail?id=1Nn15CDcJTrRZ1k9UIXJ6So-QszveMf1Y&sz=w1000", //Melee Kills
-                "32": "https://drive.google.com/thumbnail?id=14GjOfICJLr2rykK6aMPXv85ys4bTIj4m&sz=w1000", //Eagle Kills
-                Extractions ---
-                "33": "https://drive.google.com/thumbnail?id=19xkp1a91N60uPqHZXe1QIZ8ykrGs2UBA&sz=w1000", //Objectives
-                "34": "https://drive.google.com/thumbnail?id=1wSdicSURRkzxsM4qmZfwAbOd4q7Addp5&sz=w1000", //Missions
-                "35": "https://drive.google.com/thumbnail?id=1qAvUyf3DZdUi0ILfEuv3hoaWO7ZQdCX4&sz=w1000", //Samples
-                "36": "https://drive.google.com/thumbnail?id=134EAuzMShoT-UIKNmrhyQ7_48B4zfBEN&sz=w1000", //lvl 150 1x
-                "37": "https://drive.google.com/thumbnail?id=1bsxrhqiQjOE2N-4uvW7StierxDEuOijA&sz=w1000", //lvl 150 2x
-                "38": "https://drive.google.com/thumbnail?id=1v_fugy8ldUrZl0vTMYSopL_4TVTG6GlU&sz=w1000", //lvl 150 3x
-                "39": "https://drive.google.com/thumbnail?id=116Vh8DrWtABEvzwfwJTHP0uGqhSWIFzs&sz=w1000", //lvl 150 4x
-                "40": "https://drive.google.com/thumbnail?id=18JdjMxepgGQULNv1jDVs5IJA0I-JyCwM&sz=w1000"  //lvl 150 5x
-                */
+            medalHeights = {
+                "1":  512, //Terminid Blitz
+                "2":  512, //Offensive Crusade
+                "3":  512, //Defensive Crusade
+                "4":  512, //Choohe Crusade
+                "5":  512, //Genesis Crusade
+                "6":  512, //Gloom Crusade
             };
 
             /*
@@ -291,17 +411,43 @@
             */
 
             let img = new Image();
-            img.src = ribbonz[dropdown.value];
+            img.src = medals[dropdown.value];
+
+            selectedMedalWidth = medalWidths[dropdown.value];
+            selectedMedalHeight = medalHeights[dropdown.value];
 
             // Wait till image is loaded.
             img.onload = function () {
-                // Create a canvas context.
-                let canvas = document.getElementById('fullBox');
+                // Get Context for canvas to display to the user and draw it
+                let canvas = document.getElementById('displayBox');
                 let ctx = canvas.getContext('2d');
 
                 //drawImage(img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
-                ctx.drawImage(img, 0, 0, img.width, img.height, 1118*scale, 775*scale, 312*scale, 75*scale,);	// Draw the image on the canvas.
+                //Draw background
+                ctx.drawImage(selectedBackground, 0, 0, selectedBackground.width, selectedBackground.height, 0, 0, 2236*scale, 2796*scale);
+                //Draw rank icon
+                ctx.drawImage(selectedRank, 0, 0, selectedRank.width, selectedRank.height, (2123-(selectedRankIconWidth/2))*scale, (239-selectedRankIconHeight)*scale, selectedRankIconWidth*scale, selectedRankIconHeight*scale);
+                //Draw medal
+                ctx.drawImage(img, 0, 0, img.width, img.height, (215-(selectedMedalWidth/2))*scale, 775*scale, selectedMedalWidth*scale, 512*scale);
+                //Draw ribbon
+                //ctx.drawImage(img, 0, 0, img.width, img.height, 1118*scale, 775*scale, 312*scale, 75*scale);
+
+                // Get context for full resolution canvas and draw it
+                canvas = document.getElementById('fullBox');
+                ctx = canvas.getContext('2d');
+
+                //drawImage(img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
+                //Draw background
+                ctx.drawImage(selectedBackground, 0, 0, selectedBackground.width, selectedBackground.height, 0, 0, 2236, 2796);
+                //Draw rank icon
+                ctx.drawImage(selectedRank, 0, 0, selectedRank.width, selectedRank.height, (2123-(selectedRankIconWidth/2)), (239-selectedRankIconHeight), selectedRankIconWidth, selectedRankIconHeight);
+                //Draw medal
+                //ctx.drawImage(img, 0, 0, img.width, img.height, (215-(selectedMedalWidth/2)), 775, selectedMedalWidth, 512);
+                //Draw ribbon
+                //ctx.drawImage(img, 0, 0, img.width, img.height, 1118, 775, 312, 75);
             }
+
+            console.log(document.getElementById('medalsDropdown').selectedOptions.length);
 
             /* for (let i=1; document.getElementById('yourSelectElement').selectedOptions.length>=i; i++) {
                 if (document.getElementById('yourSelectElement').selectedOptions.length % 3 = 0) {
@@ -313,55 +459,143 @@
                 else if (document.getElementById('yourSelectElement').selectedOptions.length % 3 = 2) {
                     
                 }
+
+
+            } */
+
+            //document.getElementById("placehere").appendChild(elem);
+        }
+        function updateRibbons() {
+            const dropdown = document.getElementById('ribbonsDropdown');
+            const ribbons = document.getElementById('selectedRibbons');
+
+            /*
+            const selectedValue = dropdown.value;
+            if (ribbonz[selectedValue]) {
+                ribbons.src = ribbonz[selectedValue];
+                ribbons.style.display = "block";
+                ribbons.alt = dropdown.options[dropdown.selectedIndex].text;
+                //document.getElementById("selectedRibbons").appendChild(ribbons.src);
+            } else {
+                ribbons.style.display = "none";
+                ribbons.alt = "";
+            }
+            */
+
+            let img = new Image();
+            img.src = dropdown.value;
+
+            // Wait till image is loaded.
+            img.onload = function () {
+                // Get Context for canvas to display to the user and draw it
+                let canvas = document.getElementById('displayBox');
+                let ctx = canvas.getContext('2d');
+
+                //drawImage(img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
+                //Draw background
+                ctx.drawImage(selectedBackground, 0, 0, selectedBackground.width, selectedBackground.height, 0, 0, 2236*scale, 2796*scale);
+                //Draw rank icon
+                ctx.drawImage(selectedRank, 0, 0, selectedRank.width, selectedRank.height, (2123-(selectedRankIconWidth/2))*scale, (239-selectedRankIconHeight)*scale, selectedRankIconWidth*scale, selectedRankIconHeight*scale);
+                //Draw medal
+                //ctx.drawImage(img, 0, 0, img.width, img.height, (215-(selectedMedalWidth/2))*scale, 775*scale, selectedMedalWidth*scale, 512*scale);
+                //Draw ribbon
+                ctx.drawImage(img, 0, 0, img.width, img.height, 1118*scale, 775*scale, 312*scale, 75*scale);
+
+                // Get context for full resolution canvas and draw it
+                canvas = document.getElementById('fullBox');
+                ctx = canvas.getContext('2d');
+
+                //drawImage(img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
+                //Draw background
+                ctx.drawImage(selectedBackground, 0, 0, selectedBackground.width, selectedBackground.height, 0, 0, 2236, 2796);
+                //Draw rank icon
+                ctx.drawImage(selectedRank, 0, 0, selectedRank.width, selectedRank.height, (2123-(selectedRankIconWidth/2)), (239-selectedRankIconHeight), selectedRankIconWidth, selectedRankIconHeight);
+                //Draw medal
+                //ctx.drawImage(img, 0, 0, img.width, img.height, (215-(selectedMedalWidth/2)), 775, selectedMedalWidth, 512);
+                //Draw ribbon
+                //ctx.drawImage(img, 0, 0, img.width, img.height, 1118, 775, 312, 75);
+            }
+
+            console.log(document.getElementById('ribbonsDropdown').selectedOptions.length);
+
+            /* for (let i=1; document.getElementById('yourSelectElement').selectedOptions.length>=i; i++) {
+                if (document.getElementById('yourSelectElement').selectedOptions.length % 3 = 0) {
+
+                }
+                else if (document.getElementById('yourSelectElement').selectedOptions.length % 3 = 1) {
+                    
+                }
+                else if (document.getElementById('yourSelectElement').selectedOptions.length % 3 = 2) {
+                    
+                }
+
+
             } */
 
             //document.getElementById("placehere").appendChild(elem);
         }
         function downloadShadowBox() {
-            /*
-            // Grab the canvas element
-            let canvas = document.getElementById("fullBox");
-            // Create a PNG image of the pixels drawn on the canvas using the toDataURL method. PNG is the preferred format since it is supported by all browsers
+            let canvas = document.getElementById("displayBox");
             let dataURL = canvas.toDataURL("image/png");
-
-            // Create a dummy link text
             let a = document.createElement('a');
-            // Set the link to the image so that when clicked, the image begins downloading
-            a.href = dataURL;
-            // Specify the image filename
-            a.download = "shadowbox.png";
-            // Click on the link to set off download
-            a.click();
-            */
-
-            let canvas = document.getElementById("fullBox");
-            var dataURL = canvas.toDataURL("image/png");
-            var a = document.createElement('a');
             a.href = dataURL;
             a.download = 'canvas-download.png';
             a.click();
         }
-        function resizeFullBox() {
+        function resizeDisplayBox() {
+            let currentScale = scale;
+
             if ((window.innerHeight-document.getElementById("theDiv").offsetHeight-60) > (window.innerWidth-40)*2796/2236) {
                 scale = ((window.innerWidth-40)/2236);
-                console.log("scaling by width");
             }
             if ((window.innerHeight-document.getElementById("theDiv").offsetHeight-60) <= (window.innerWidth-40)*2796/2236) { 
                 scale = ((window.innerHeight-document.getElementById("theDiv").offsetHeight-60)/2796);
-                console.log("scaling by height");
             }
 
-            console.log(scale);
-
-            document.getElementById('fullBox').width = 2236*scale;
-            document.getElementById('fullBox').height = 2796*scale;
-
-            let canvas = document.getElementById('fullBox');
-            let ctx = canvas.getContext('2d');
+            let newScale = scale;
 
             //drawImage(img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
-            ctx.drawImage(selectedBox, 0, 0, selectedBox.width, selectedBox.height, 0, 0, 2236*scale, 2796*scale);
-            ctx.drawImage(selectedRank, 0, 0, selectedRank.width, selectedRank.height, (2123-(selectedRankIconWidth/2))*scale, (239-selectedRankIconHeight)*scale, selectedRankIconWidth*scale, selectedRankIconHeight*scale);
+            if (currentScale != newScale) {
+                let canvas = document.getElementById('displayBox');
+                let ctx = canvas.getContext('2d');
+
+                document.getElementById('displayBox').style.width = 2236*scale;
+                document.getElementById('displayBox').style.height = 2796*scale;
+
+                document.getElementById('displayBox').width = 2236*scale;
+                document.getElementById('displayBox').height = 2796*scale;
+
+                ctx.drawImage(selectedBackground, 0, 0, selectedBackground.width, selectedBackground.height, 0, 0, 2236*scale, 2796*scale);
+                ctx.drawImage(selectedRank, 0, 0, selectedRank.width, selectedRank.height, (2123-(selectedRankIconWidth/2))*scale, (239-selectedRankIconHeight)*scale, selectedRankIconWidth*scale, selectedRankIconHeight*scale);
+
+                textHeight = Math.round(130*scale);
+                ctx.font = (textHeight+'px Ubuntu Mono');
+                ctx.fillStyle = "gold";
+                ctx.shadowColor = "black";
+                ctx.shadowOffsetX = 5;
+                ctx.shadowOffsetY = 5;
+                ctx.shadowBlur = 10;
+                textWidth = ctx.measureText(name).width;
+                let nameLength = name.length;
+
+                // Calculate the height of the text based on font size and line height
+
+                if (textWidth >= 642*scale) {
+                    //textWidth = ctx.measureText(name).width;
+                    textHeight = Math.round(((642*scale)/nameLength)*2);
+                    ctx.font = (textHeight+'px Ubuntu Mono');
+                    textWidth = 642*scale;
+                }
+                else {
+                    ctx.font = (textHeight+'px Ubuntu Mono');
+                    textWidth = ctx.measureText(name).width;
+                }
+
+                //textHeight = Math.round(textHeight);
+
+                //Draw text
+                ctx.fillText(name, (1118*scale)-textWidth/2, (557*scale)+textHeight/4);
+            }
         }
     </script>
 </body>
