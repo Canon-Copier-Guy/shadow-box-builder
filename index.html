@@ -17,11 +17,6 @@
             position: relative;
             margin: auto;
         }
-
-        /* font-family: 'RACE1 Brannt Chiseled NCV', sans-serif;
-        font-family: 'RACE1 Brannt NCV', sans-serif;
-        font-family: 'RACE1 Brannt Plus Chiseled NCV', sans-serif;
-        font-family: 'RACE1 Brannt Plus NCV', sans-serif; */
     </style>
 </head>
 <body onresize="resizeDisplayBox()">
@@ -35,7 +30,7 @@
         <option value="/Shadowbox Templates/Shadow Box Template, PV.png">Phantom Vanguard</option>
     </select>
 
-    <select id="rankDropdown" onchange="updateRank()">
+    <select id="rankDropdown" onchange="updateBackground()">
         <option value="">-- Select Rank --</option>
         <option value="1">Cadet</option>
         <option value="2">Space Cadet</option>
@@ -60,7 +55,7 @@
         <option value="21">Super Private</option>
     </select>
 
-    <select multiple id="ribbonsDropdown" onchange="updateRibbons()">
+    <select multiple id="ribbonsDropdown" onchange="updateBackground()">
         <option value="">-- Select Ribbon(s) --</option>
         <option value="https://drive.google.com/thumbnail?id=11ky11IsKxHttkMqMPdb7BahsFvc0UfyI&sz=w1000">Offensive Crusades</option>
         <option value="https://drive.google.com/thumbnail?id=1SolWu4KTG9GJDD7dWiB4lql-luyRZd-J&sz=w1000">Defensive Crusade</option>
@@ -105,7 +100,7 @@
         <option value="https://drive.google.com/thumbnail?id=18JdjMxepgGQULNv1jDVs5IJA0I-JyCwM&sz=w1000">lvl 150 5x</option>
     </select>
 
-    <select multiple id="MedalsDropdown" onchange="updateMedals()">
+    <select multiple id="MedalsDropdown" onchange="updateBackground()">
         <option value="">-- Select Medals(s) --</option>
         <option value="1">Terminid Blitz</option>
         <option value="2">Offensive Offensive</option>
@@ -115,7 +110,7 @@
         <option value="6">Gloom Crusade</option>
     </select>
 
-    <input id="numberCallsign" type="text" placeholder="Insert number and Callsign" onchange="updateName()">
+    <input id="numberCallsign" type="text" placeholder="Insert number and Callsign" onchange="updateBackground()">
 
     <input id="downloadButton" type="button" value="Download Shadow Box" onclick="downloadShadowBox();" />
 
@@ -144,8 +139,9 @@
         var selectedMedalWidth;
         var selectedMedalHeight;
         var selectedBackground;
+        var detachment;
 
-        var name = "";
+        var name;
         var textWidth;
         var textHeight;
 
@@ -159,43 +155,36 @@
         document.getElementById('fullBox').height = 2796;
 
         function updateBackground() {
-            const dropdown = document.getElementById('backgroundDropdown');
-            const background = document.getElementById('selectedBackground');
+            let dropdown = document.getElementById('backgroundDropdown');
+            let background = document.getElementById('selectedBackground');
 
             selectedBackground = new Image();
             selectedBackground.src = dropdown.value;
 
+            if (dropdown.value == "https://drive.google.com/thumbnail?id=1AiH1V7yFwuuserY22kprdXPvn3d1u7f8&sz=w1000") {
+                detachment = "HAC-";
+            }
+            else if (dropdown.value == "https://drive.google.com/thumbnail?id=1ZdQmwUW_8HqEDaJcu6PRXSQbdRVxW3q_&sz=w1000") {
+                detachment = "DR-";
+            }
+            else if (dropdown.value == "https://drive.google.com/thumbnail?id=1_Shqn6Rl22ZHc4sNCNOCVoPXeWMD2Z0Q&sz=w1000") {
+                detachment = "DC-";
+            }
+            else if (dropdown.value == "https://drive.google.com/thumbnail?id=12I5X1LLgVuqylQ-CFYxJu1U5dkQoU7om&sz=w1000") {
+                detachment = "PV-";
+            }
+
             // Wait till image is loaded.
             selectedBackground.onload = function () {
-                // Get Context for canvas to display to the user and draw it
                 let canvas = document.getElementById('displayBox');
                 let ctx = canvas.getContext('2d');
 
-                //drawImage(img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
                 //Draw background
                 ctx.drawImage(selectedBackground, 0, 0, selectedBackground.width, selectedBackground.height, 0, 0, 2236*scale, 2796*scale);
-                //Draw rank icon
-                ctx.drawImage(selectedRank, 0, 0, selectedRank.width, selectedRank.height, (2123-(selectedRankIconWidth/2))*scale, (239-selectedRankIconHeight)*scale, selectedRankIconWidth*scale, selectedRankIconHeight*scale);
-                //Draw medal
-                //ctx.drawImage(img, 0, 0, img.width, img.height, (215-(selectedMedalWidth/2))*scale, 775*scale, selectedMedalWidth*scale, 512*scale);
-                //Draw ribbon
-                //ctx.drawImage(img, 0, 0, img.width, img.height, 1118*scale, 775*scale, 312*scale, 75*scale);
-                //Draw text
-                ctx.fillText(name, (1118*scale)-textWidth/2, (557*scale)+textHeight/4);
-
-                // Get context for full resolution canvas and draw it
-                canvas = document.getElementById('fullBox');
-                ctx = canvas.getContext('2d');
-
-                //drawImage(img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
-                //Draw background
-                ctx.drawImage(selectedBackground, 0, 0, selectedBackground.width, selectedBackground.height, 0, 0, 2236, 2796);
-                //Draw rank icon
-                ctx.drawImage(selectedRank, 0, 0, selectedRank.width, selectedRank.height, (2123-(selectedRankIconWidth/2)), (239-selectedRankIconHeight), selectedRankIconWidth, selectedRankIconHeight);
-                //Draw medal
-                //ctx.drawImage(img, 0, 0, img.width, img.height, (215-(selectedMedalWidth/2)), 775, selectedMedalWidth, 512);
-                //Draw ribbon
-                //ctx.drawImage(img, 0, 0, img.width, img.height, 1118, 775, 312, 75);
+                updateRank();
+                updateName();
+                updateRibbons();
+                updateMedals();
             }
         }
         function updateRank() {
@@ -282,43 +271,17 @@
 
             // Wait till image is loaded.
             selectedRank.onload = function () {
-                // Get Context for canvas to display to the user and draw it
                 let canvas = document.getElementById('displayBox');
                 let ctx = canvas.getContext('2d');
 
-                //drawImage(img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
-                //Draw background
-                ctx.drawImage(selectedBackground, 0, 0, selectedBackground.width, selectedBackground.height, 0, 0, 2236*scale, 2796*scale);
                 //Draw rank icon
                 ctx.drawImage(selectedRank, 0, 0, selectedRank.width, selectedRank.height, (2123-(selectedRankIconWidth/2))*scale, (239-selectedRankIconHeight)*scale, selectedRankIconWidth*scale, selectedRankIconHeight*scale);
-                //Draw medal
-                //ctx.drawImage(img, 0, 0, img.width, img.height, (215-(selectedMedalWidth/2))*scale, 775*scale, selectedMedalWidth*scale, 512*scale);
-                //Draw ribbon
-                //ctx.drawImage(img, 0, 0, img.width, img.height, 1118*scale, 775*scale, 312*scale, 75*scale);
-                //Draw text
-                ctx.fillText(name, (1118*scale)-textWidth/2, (557*scale)+textHeight/4);
-
-                // Get context for full resolution canvas and draw it
-                canvas = document.getElementById('fullBox');
-                ctx = canvas.getContext('2d');
-
-                //drawImage(img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
-                //Draw background
-                ctx.drawImage(selectedBackground, 0, 0, selectedBackground.width, selectedBackground.height, 0, 0, 2236, 2796);
-                //Draw rank icon
-                ctx.drawImage(selectedRank, 0, 0, selectedRank.width, selectedRank.height, (2123-(selectedRankIconWidth/2)), (239-selectedRankIconHeight), selectedRankIconWidth, selectedRankIconHeight);
-                //Draw medal
-                //ctx.drawImage(img, 0, 0, img.width, img.height, (215-(selectedMedalWidth/2)), 775, selectedMedalWidth, 512);
-                //Draw ribbon
-                //ctx.drawImage(img, 0, 0, img.width, img.height, 1118, 775, 312, 75);
-                //Draw text
-                //ctx.fillText(name, (1118)-textWidth/2, (557)+textHeight/4);
             }
         }
         function updateName() {
             let canvas = document.getElementById('displayBox');
             let ctx = canvas.getContext('2d');
-            name = document.getElementById('numberCallsign').value.toUpperCase();
+            name = (detachment+document.getElementById('numberCallsign').value.toUpperCase());
             let nameLength = name.length;
 
             // Measure the width of the text
@@ -328,27 +291,22 @@
 
             textHeight = Math.round(130*scale);
             ctx.font = (textHeight+'px Ubuntu Mono');
-            //ctx.font = (textHeight+'RACE1 Brannt Chiseled NCV');
-            //ctx.color = #fcc312;
             ctx.fillStyle = "gold";
-            ctx.shadowColor = "black";
-            ctx.shadowOffsetX = 5;
-            ctx.shadowOffsetY = 5;
-            ctx.shadowBlur = 10;
+            //ctx.shadowColor = "black";
+            //ctx.shadowOffsetX = 5;
+            //ctx.shadowOffsetY = 5;
+            //ctx.shadowBlur = 10;
             textWidth = ctx.measureText(name).width;
 
             // Calculate the height of the text based on font size and line height
 
             if (textWidth >= 642*scale) {
-                //textWidth = ctx.measureText(name).width;
                 textHeight = Math.round(((642*scale)/nameLength)*2);
                 ctx.font = (textHeight+'px Ubuntu Mono');
-                //ctx.font = (textHeight+'RACE1 Brannt Chiseled NCV');
                 textWidth = 642*scale;
             }
             else {
                 ctx.font = (textHeight+'px Ubuntu Mono');
-                //ctx.font = (textHeight+'RACE1 Brannt Chiseled NCV');
                 textWidth = ctx.measureText(name).width;
             }
 
@@ -356,26 +314,14 @@
             console.log(textHeight);
             console.log(textWidth);
 
-            //drawImage(img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
-            //Draw background
-            ctx.drawImage(selectedBackground, 0, 0, selectedBackground.width, selectedBackground.height, 0, 0, 2236*scale, 2796*scale);
-            //Draw rank icon
-            ctx.drawImage(selectedRank, 0, 0, selectedRank.width, selectedRank.height, (2123-(selectedRankIconWidth/2))*scale, (239-selectedRankIconHeight)*scale, selectedRankIconWidth*scale, selectedRankIconHeight*scale);
-
             //Draw text
             ctx.fillText(name, (1118*scale)-textWidth/2, (557*scale)+textHeight/4);
-            
-            //canvas = document.getElementById('fullBox');
-            //ctx = canvas.getContext('2d');
-
-            //Draw text
-            //ctx.fillText(name, (1118*scale)-textWidth/2, (557*scale)+textHeight/4);
         }
         function updateMedals() {
-            const dropdown = document.getElementById('MedalsDropdown');
-            const medal = document.getElementById('selectedMedals');
+            let selectedMedel = document.getElementById('MedalsDropdown');
+            //let medal = document.getElementById('selectedMedals');
 
-            const medals = {
+            let medals = {
                 //Strike & Crusade Ribbons
                 "1": "https://drive.google.com/thumbnail?id=1FpylY_tA7L6_rOvEnRlHUQu8VARUUVEj&sz=w1000", //Terminid Blitz
                 "2": "https://drive.google.com/thumbnail?id=1r2th-Es94lUIfVnYoUfn30JKf-c8skoK&sz=w1000", //Offensive Crusade
@@ -403,150 +349,62 @@
                 "6":  512, //Gloom Crusade
             };
 
-            /*
-            const selectedValue = dropdown.value;
-            if (ribbonz[selectedValue]) {
-                ribbons.src = ribbonz[selectedValue];
-                ribbons.style.display = "block";
-                ribbons.alt = dropdown.options[dropdown.selectedIndex].text;
-                //document.getElementById("selectedRibbons").appendChild(ribbons.src);
-            } else {
-                ribbons.style.display = "none";
-                ribbons.alt = "";
-            }
-            */
+            let medal = new Image();
+            medal.src = medals[selectedMedel.value];
 
-            let img = new Image();
-            img.src = medals[dropdown.value];
-
-            selectedMedalWidth = medalWidths[dropdown.value];
-            selectedMedalHeight = medalHeights[dropdown.value];
+            selectedMedalWidth = medalWidths[selectedMedel.value];
+            selectedMedalHeight = medalHeights[selectedMedel.value];
 
             // Wait till image is loaded.
-            img.onload = function () {
+            medal.onload = function () {
                 // Get Context for canvas to display to the user and draw it
                 let canvas = document.getElementById('displayBox');
                 let ctx = canvas.getContext('2d');
 
-                //drawImage(img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
-                //Draw background
-                ctx.drawImage(selectedBackground, 0, 0, selectedBackground.width, selectedBackground.height, 0, 0, 2236*scale, 2796*scale);
-                //Draw rank icon
-                ctx.drawImage(selectedRank, 0, 0, selectedRank.width, selectedRank.height, (2123-(selectedRankIconWidth/2))*scale, (239-selectedRankIconHeight)*scale, selectedRankIconWidth*scale, selectedRankIconHeight*scale);
                 //Draw medal
-                ctx.drawImage(img, 0, 0, img.width, img.height, (215-(selectedMedalWidth/2))*scale, 775*scale, selectedMedalWidth*scale, 512*scale);
-                //Draw ribbon
-                //ctx.drawImage(img, 0, 0, img.width, img.height, 1118*scale, 775*scale, 312*scale, 75*scale);
+                ctx.drawImage(medal, 0, 0, medal.width, medal.height, (215-(selectedMedalWidth/2))*scale, 775*scale, selectedMedalWidth*scale, 512*scale);
 
                 // Get context for full resolution canvas and draw it
                 canvas = document.getElementById('fullBox');
                 ctx = canvas.getContext('2d');
 
-                //drawImage(img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
-                //Draw background
-                ctx.drawImage(selectedBackground, 0, 0, selectedBackground.width, selectedBackground.height, 0, 0, 2236, 2796);
-                //Draw rank icon
-                ctx.drawImage(selectedRank, 0, 0, selectedRank.width, selectedRank.height, (2123-(selectedRankIconWidth/2)), (239-selectedRankIconHeight), selectedRankIconWidth, selectedRankIconHeight);
                 //Draw medal
-                //ctx.drawImage(img, 0, 0, img.width, img.height, (215-(selectedMedalWidth/2)), 775, selectedMedalWidth, 512);
-                //Draw ribbon
-                //ctx.drawImage(img, 0, 0, img.width, img.height, 1118, 775, 312, 75);
+                //ctx.drawImage(medal, 0, 0, medal.width, medal.height, (215-(selectedMedalWidth/2)), 775, selectedMedalWidth, 512);
             }
 
             console.log(document.getElementById('medalsDropdown').selectedOptions.length);
-
-            /* for (let i=1; document.getElementById('yourSelectElement').selectedOptions.length>=i; i++) {
-                if (document.getElementById('yourSelectElement').selectedOptions.length % 3 = 0) {
-
-                }
-                else if (document.getElementById('yourSelectElement').selectedOptions.length % 3 = 1) {
-                    
-                }
-                else if (document.getElementById('yourSelectElement').selectedOptions.length % 3 = 2) {
-                    
-                }
-
-
-            } */
-
-            //document.getElementById("placehere").appendChild(elem);
         }
         function updateRibbons() {
-            const dropdown = document.getElementById('ribbonsDropdown');
-            const ribbons = document.getElementById('selectedRibbons');
+            let dropdown = document.getElementById('ribbonsDropdown');
+            let ribbons = document.getElementById('selectedRibbons');
 
-            /*
-            const selectedValue = dropdown.value;
-            if (ribbonz[selectedValue]) {
-                ribbons.src = ribbonz[selectedValue];
-                ribbons.style.display = "block";
-                ribbons.alt = dropdown.options[dropdown.selectedIndex].text;
-                //document.getElementById("selectedRibbons").appendChild(ribbons.src);
-            } else {
-                ribbons.style.display = "none";
-                ribbons.alt = "";
-            }
-            */
-
-            let img = new Image();
-            img.src = dropdown.value;
+            let ribbon = new Image();
+            ribbon.src = dropdown.value;
 
             // Wait till image is loaded.
-            img.onload = function () {
+            ribbon.onload = function () {
                 // Get Context for canvas to display to the user and draw it
                 let canvas = document.getElementById('displayBox');
                 let ctx = canvas.getContext('2d');
 
-                //drawImage(img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
-                //Draw background
-                ctx.drawImage(selectedBackground, 0, 0, selectedBackground.width, selectedBackground.height, 0, 0, 2236*scale, 2796*scale);
-                //Draw rank icon
-                ctx.drawImage(selectedRank, 0, 0, selectedRank.width, selectedRank.height, (2123-(selectedRankIconWidth/2))*scale, (239-selectedRankIconHeight)*scale, selectedRankIconWidth*scale, selectedRankIconHeight*scale);
-                //Draw medal
-                //ctx.drawImage(img, 0, 0, img.width, img.height, (215-(selectedMedalWidth/2))*scale, 775*scale, selectedMedalWidth*scale, 512*scale);
                 //Draw ribbon
-                ctx.drawImage(img, 0, 0, img.width, img.height, 1118*scale, 775*scale, 312*scale, 75*scale);
+                ctx.drawImage(ribbon, 0, 0, ribbon.width, ribbon.height, 1118*scale, 775*scale, 312*scale, 75*scale);
 
                 // Get context for full resolution canvas and draw it
-                canvas = document.getElementById('fullBox');
-                ctx = canvas.getContext('2d');
+                //canvas = document.getElementById('fullBox');
+                //ctx = canvas.getContext('2d');
 
-                //drawImage(img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
-                //Draw background
-                ctx.drawImage(selectedBackground, 0, 0, selectedBackground.width, selectedBackground.height, 0, 0, 2236, 2796);
-                //Draw rank icon
-                ctx.drawImage(selectedRank, 0, 0, selectedRank.width, selectedRank.height, (2123-(selectedRankIconWidth/2)), (239-selectedRankIconHeight), selectedRankIconWidth, selectedRankIconHeight);
-                //Draw medal
-                //ctx.drawImage(img, 0, 0, img.width, img.height, (215-(selectedMedalWidth/2)), 775, selectedMedalWidth, 512);
                 //Draw ribbon
-                //ctx.drawImage(img, 0, 0, img.width, img.height, 1118, 775, 312, 75);
+                //ctx.drawImage(ribbon, 0, 0, ribbon.width, ribbon.height, 1118, 775, 312, 75);
             }
-
             console.log(document.getElementById('ribbonsDropdown').selectedOptions.length);
-
-            /* for (let i=1; document.getElementById('yourSelectElement').selectedOptions.length>=i; i++) {
-                if (document.getElementById('yourSelectElement').selectedOptions.length % 3 = 0) {
-
-                }
-                else if (document.getElementById('yourSelectElement').selectedOptions.length % 3 = 1) {
-                    
-                }
-                else if (document.getElementById('yourSelectElement').selectedOptions.length % 3 = 2) {
-                    
-                }
-
-
-            } */
-
-            //document.getElementById("placehere").appendChild(elem);
         }
         function downloadShadowBox() {
-            //let canvas = document.getElementById("displayBox");
-            let canvas = document.getElementById("fullBox");
+            let canvas = document.getElementById("displayBox");
             let dataURL = canvas.toDataURL("image/png");
             let a = document.createElement('a');
             a.href = dataURL;
-            a.download = (name+' Shadow Box.png');
+            a.download = 'canvas-download.png';
             a.click();
         }
         function resizeDisplayBox() {
@@ -566,42 +424,13 @@
                 let canvas = document.getElementById('displayBox');
                 let ctx = canvas.getContext('2d');
 
-                document.getElementById('displayBox').style.width = 2236*scale;
-                document.getElementById('displayBox').style.height = 2796*scale;
+                //document.getElementById('displayBox').style.width = 2236*scale;
+                //document.getElementById('displayBox').style.height = 2796*scale;
 
                 document.getElementById('displayBox').width = 2236*scale;
                 document.getElementById('displayBox').height = 2796*scale;
 
-                ctx.drawImage(selectedBackground, 0, 0, selectedBackground.width, selectedBackground.height, 0, 0, 2236*scale, 2796*scale);
-                ctx.drawImage(selectedRank, 0, 0, selectedRank.width, selectedRank.height, (2123-(selectedRankIconWidth/2))*scale, (239-selectedRankIconHeight)*scale, selectedRankIconWidth*scale, selectedRankIconHeight*scale);
-
-                textHeight = Math.round(130*scale);
-                ctx.font = (textHeight+'px Ubuntu Mono');
-                ctx.fillStyle = "gold";
-                ctx.shadowColor = "black";
-                ctx.shadowOffsetX = 5;
-                ctx.shadowOffsetY = 5;
-                ctx.shadowBlur = 10;
-                textWidth = ctx.measureText(name).width;
-                let nameLength = name.length;
-
-                // Calculate the height of the text based on font size and line height
-
-                if (textWidth >= 642*scale) {
-                    //textWidth = ctx.measureText(name).width;
-                    textHeight = Math.round(((642*scale)/nameLength)*2);
-                    ctx.font = (textHeight+'px Ubuntu Mono');
-                    textWidth = 642*scale;
-                }
-                else {
-                    ctx.font = (textHeight+'px Ubuntu Mono');
-                    textWidth = ctx.measureText(name).width;
-                }
-
-                //textHeight = Math.round(textHeight);
-
-                //Draw text
-                ctx.fillText(name, (1118*scale)-textWidth/2, (557*scale)+textHeight/4);
+                updateBackground();
             }
         }
     </script>
