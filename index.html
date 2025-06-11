@@ -181,6 +181,14 @@
 
                 //Draw background
                 ctx.drawImage(selectedBackground, 0, 0, selectedBackground.width, selectedBackground.height, 0, 0, 2236*scale, 2796*scale);
+
+                // Get context for full resolution canvas and draw it
+                canvas = document.getElementById('fullBox');
+                ctx = canvas.getContext('2d');
+
+                //Draw background
+                ctx.drawImage(selectedBackground, 0, 0, selectedBackground.width, selectedBackground.height, 0, 0, 2236*scale, 2796*scale);
+                
                 updateRank();
                 updateName();
                 updateRibbons();
@@ -276,6 +284,12 @@
 
                 //Draw rank icon
                 ctx.drawImage(selectedRank, 0, 0, selectedRank.width, selectedRank.height, (2123-(selectedRankIconWidth/2))*scale, (239-selectedRankIconHeight)*scale, selectedRankIconWidth*scale, selectedRankIconHeight*scale);
+            
+                // Get context for full resolution canvas and draw it
+                canvas = document.getElementById('fullBox');
+                ctx = canvas.getContext('2d');
+
+                ctx.drawImage(selectedRank, 0, 0, selectedRank.width, selectedRank.height, (2123-(selectedRankIconWidth/2)), (239-selectedRankIconHeight), selectedRankIconWidth, selectedRankIconHeight);
             }
         }
         function updateName() {
@@ -369,7 +383,7 @@
                 ctx = canvas.getContext('2d');
 
                 //Draw medal
-                //ctx.drawImage(medal, 0, 0, medal.width, medal.height, (215-(selectedMedalWidth/2)), 775, selectedMedalWidth, 512);
+                ctx.drawImage(medal, 0, 0, medal.width, medal.height, (215-(selectedMedalWidth/2)), 775, selectedMedalWidth, 512);
             }
 
             console.log(document.getElementById('medalsDropdown').selectedOptions.length);
@@ -391,11 +405,11 @@
                 ctx.drawImage(ribbon, 0, 0, ribbon.width, ribbon.height, 1118*scale, 775*scale, 312*scale, 75*scale);
 
                 // Get context for full resolution canvas and draw it
-                //canvas = document.getElementById('fullBox');
-                //ctx = canvas.getContext('2d');
+                canvas = document.getElementById('fullBox');
+                ctx = canvas.getContext('2d');
 
                 //Draw ribbon
-                //ctx.drawImage(ribbon, 0, 0, ribbon.width, ribbon.height, 1118, 775, 312, 75);
+                ctx.drawImage(ribbon, 0, 0, ribbon.width, ribbon.height, 1118, 775, 312, 75);
             }
             console.log(document.getElementById('ribbonsDropdown').selectedOptions.length);
         }
