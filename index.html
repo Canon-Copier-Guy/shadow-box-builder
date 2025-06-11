@@ -311,7 +311,8 @@
             ctx.shadowOffsetX = 5;
             ctx.shadowOffsetY = 5;
             ctx.shadowBlur = 10;
-            ctx.restore();
+            ctx.shadowOffsetX = 0;
+            ctx.shadowOffsetY = 0;
 
             // Calculate the height of the text based on font size and line height
 
@@ -339,7 +340,8 @@
             ctx.shadowOffsetX = 5;
             ctx.shadowOffsetY = 5;
             ctx.shadowBlur = 10;
-            ctx.restore();
+            ctx.shadowOffsetX = 0;
+            ctx.shadowOffsetY = 0;
 
             //Draw text
             ctx.fillText(name, 1118-textWidth/2, 557+textHeight/4);
