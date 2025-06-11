@@ -305,12 +305,13 @@
 
             textHeight = Math.round(130*scale);
             ctx.font = (textHeight+'px Ubuntu Mono');
-            ctx.fillStyle = "gold";
-            //ctx.shadowColor = "black";
-            //ctx.shadowOffsetX = 5;
-            //ctx.shadowOffsetY = 5;
-            //ctx.shadowBlur = 10;
             textWidth = ctx.measureText(name).width;
+            ctx.fillStyle = "gold";
+            ctx.shadowColor = "black";
+            ctx.shadowOffsetX = 5;
+            ctx.shadowOffsetY = 5;
+            ctx.shadowBlur = 10;
+            ctx.restore();
 
             // Calculate the height of the text based on font size and line height
 
@@ -324,10 +325,6 @@
                 textWidth = ctx.measureText(name).width;
             }
 
-            console.log(scale);
-            console.log("text height:"+textHeight);
-            console.log(textWidth);
-
             //Draw text
             ctx.fillText(name, (1118*scale)-textWidth/2, (557*scale)+textHeight/4);
 
@@ -337,8 +334,12 @@
             textHeight = Math.round(textHeight/scale);
             ctx.font = (textHeight+'px Ubuntu Mono');
             textWidth = ctx.measureText(name).width;
-
-            console.log("text height:"+textHeight);
+            ctx.fillStyle = "gold";
+            ctx.shadowColor = "black";
+            ctx.shadowOffsetX = 5;
+            ctx.shadowOffsetY = 5;
+            ctx.shadowBlur = 10;
+            ctx.restore();
 
             //Draw text
             ctx.fillText(name, 1118-textWidth/2, 557+textHeight/4);
