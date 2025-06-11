@@ -414,7 +414,7 @@
             console.log(document.getElementById('ribbonsDropdown').selectedOptions.length);
         }
         function downloadShadowBox() {
-            let canvas = document.getElementById("displayBox");
+            let canvas = document.getElementById("fullBox");
             let dataURL = canvas.toDataURL("image/png");
             let a = document.createElement('a');
             a.href = dataURL;
