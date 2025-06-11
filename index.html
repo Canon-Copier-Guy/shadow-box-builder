@@ -325,7 +325,7 @@
             }
 
             console.log(scale);
-            console.log(textHeight);
+            console.log("text height:"+textHeight);
             console.log(textWidth);
 
             //Draw text
@@ -337,6 +337,8 @@
             textHeight = Math.round(textHeight/scale);
             ctx.font = (textHeight+'px Ubuntu Mono');
             textWidth = ctx.measureText(name).width;
+
+            console.log("text height:"+textHeight);
 
             //Draw text
             ctx.fillText(name, 1118-textWidth/2, 557+textHeight/4);
