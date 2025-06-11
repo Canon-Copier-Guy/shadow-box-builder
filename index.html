@@ -331,8 +331,8 @@
             //Draw text
             ctx.fillText(name, (1118*scale)-textWidth/2, (557*scale)+textHeight/4);
 
-            let canvas = document.getElementById('fullBox');
-            let ctx = canvas.getContext('2d');
+            canvas = document.getElementById('fullBox');
+            ctx = canvas.getContext('2d');
 
             textHeight = textHeight*scale;
             ctx.font = (textHeight+'px Ubuntu Mono');
