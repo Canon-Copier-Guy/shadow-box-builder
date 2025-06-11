@@ -311,8 +311,6 @@
             ctx.shadowOffsetX = 5;
             ctx.shadowOffsetY = 5;
             ctx.shadowBlur = 10;
-            ctx.shadowOffsetX = 0;
-            ctx.shadowOffsetY = 0;
 
             // Calculate the height of the text based on font size and line height
 
@@ -329,6 +327,9 @@
             //Draw text
             ctx.fillText(name, (1118*scale)-textWidth/2, (557*scale)+textHeight/4);
 
+            ctx.shadowOffsetX = 0;
+            ctx.shadowOffsetY = 0;
+
             canvas = document.getElementById('fullBox');
             ctx = canvas.getContext('2d');
 
@@ -340,11 +341,12 @@
             ctx.shadowOffsetX = 5;
             ctx.shadowOffsetY = 5;
             ctx.shadowBlur = 10;
-            ctx.shadowOffsetX = 0;
-            ctx.shadowOffsetY = 0;
 
             //Draw text
             ctx.fillText(name, 1118-textWidth/2, 557+textHeight/4);
+
+            ctx.shadowOffsetX = 0;
+            ctx.shadowOffsetY = 0;
         }
         function updateMedals() {
             let selectedMedel = document.getElementById('MedalsDropdown');
