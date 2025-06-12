@@ -301,14 +301,13 @@
         
         function updateName() {
             name = (detachment+document.getElementById('numberCallsign').value.toUpperCase());
-            let nameLength = name.length;
-            let nameArray = name.split("");
-            let widths = 0;
-            totalWidth = 0;
+            let nameArray = name.split(""); //split each character of the entered number and callsign into an array
+            let widths; //this will store the widths of each character for placment within the name
+            totalWidth = 0; //this stores the total width of the characters to determine scaling and placment of the name as a whole
 
             console.log(nameArray);
 
-            for(let i = 0; i < nameArray.length; i++) { 
+            for(let i = 0; i < nameArray.length; i++) { //for every character, get the width and add it the the "widths" array, and set the totalWidth
                 let character = new Image();
                 character.src = "/Letters & Numbers/"+nameArray[i]+".png";
 
@@ -332,6 +331,7 @@
 
             let textScale = 0;
 
+            //scale down the characters in the name if it is too large
             if (totalWidth > 642) {
                 textScale = 642/totalWidth;
             }
@@ -343,7 +343,7 @@
 
             let currentWidth = 0;
             
-            for (let i = 0; i < nameArray.length; i++) {
+            for (let i = 0; i < nameArray.length; i++) { //load in the image of every character, and draw it
                 let character = new Image();
                 character.src = "/Letters & Numbers/"+nameArray[i]+".png";
 
@@ -370,52 +370,6 @@
                     }
                 };
             }
-
-            /*textHeight = Math.round(130*scale);
-            ctx.font = (textHeight+'px Ubuntu Mono');
-            textWidth = ctx.measureText(name).width;
-            ctx.fillStyle = "gold";
-            ctx.shadowColor = "black";
-            ctx.shadowOffsetX = 5;
-            ctx.shadowOffsetY = 5;
-            ctx.shadowBlur = 10;
-
-            // Calculate the height of the text based on font size and line height
-
-            if (textWidth >= 642*scale) {
-                textHeight = Math.round(((642*scale)/nameLength)*2);
-                ctx.font = (textHeight+'px Ubuntu Mono');
-                textWidth = 642*scale;
-            }
-            else {
-                ctx.font = (textHeight+'px Ubuntu Mono');
-                textWidth = ctx.measureText(name).width;
-            }
-
-            //Draw text
-            ctx.fillText(name, (1118*scale)-textWidth/2, (557*scale)+textHeight/4);
-
-            ctx.shadowOffsetX = 0;
-            ctx.shadowOffsetY = 0;
-            ctx.shadowBlur = 0;
-
-            canvas = document.getElementById('fullBox');
-            ctx = canvas.getContext('2d');
-
-            textHeight = Math.round(textHeight/scale);
-            ctx.font = (textHeight+'px Ubuntu Mono');
-            textWidth = ctx.measureText(name).width;
-            ctx.fillStyle = "gold";
-            ctx.shadowColor = "black";
-            ctx.shadowOffsetX = 5;
-            ctx.shadowOffsetY = 5;
-            ctx.shadowBlur = 10;
-
-            //Draw text
-            ctx.fillText(name, 1118-textWidth/2, 557+textHeight/4);
-
-            ctx.shadowOffsetX = 0;
-            ctx.shadowOffsetY = 0;*/
         }
         function updateMedals() {
             let selectedMedels = document.querySelector('#MedalsDropdown');
