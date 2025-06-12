@@ -296,22 +296,32 @@
                 ctx.drawImage(selectedRank, 0, 0, selectedRank.width, selectedRank.height, (2123-(selectedRankIconWidth/2)), (239-selectedRankIconHeight), selectedRankIconWidth, selectedRankIconHeight);
             }
         }
+        
         let totalWidth = 0;
+        
         function updateName() {
             name = (detachment+document.getElementById('numberCallsign').value.toUpperCase());
             let nameLength = name.length;
             let nameArray = name.split("");
-            let widthsArray = 0;
+            let widths = 0;
             totalWidth = 0;
 
             console.log(nameArray);
 
             for(let i = 0; i < nameArray.length; i++) { 
+                let characters = {
+                    nameArray[i]: "/Letters & Numbers/"+nameArray[i]+".png"
+                };
+                
                 let character = new Image();
-                let characterWidth = 0;
-                character.src = "/Letters & Numbers/"+nameArray[i]+".png";
+                character.src = characters[nameArray[i]];
+
+                console.log(i+": "+nameArray[i]);
+
+                widths[i] = character.widths;
                 
                 character.onload = function () {
+                    console.log("Loading "+nameArray[i]+"("+characters[nameArray[i]]+")");
                     
                     if (nameArray[i] == "Q") {
                         widthsArray[i] = 201;
@@ -319,10 +329,10 @@
                     else { 
                         widthsArray[i] = character.width;
                     }
+
+                    console.log("setting width of "+nameArray[i]+" to "+widthsArray[i]);
                 }
             }
-
-            console.log(widthsArray);
 
             let textScale = 0;
 
