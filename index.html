@@ -298,11 +298,12 @@
                 ctx.drawImage(selectedRank, 0, 0, selectedRank.width, selectedRank.height, (2123-(selectedRankIconWidth/2)), (239-selectedRankIconHeight), selectedRankIconWidth, selectedRankIconHeight);
             }
         }
+        let totalWidth = 0;
         function updateName() {
             name = (detachment+document.getElementById('numberCallsign').value.toUpperCase());
             let nameLength = name.length;
             let nameArray = name.split("");
-            let totalWidth = 0;
+            totalWidth = 0;
 
             console.log(nameArray);
 
@@ -315,13 +316,15 @@
                     console.log("Width of "+nameArray[i]+": "+character.width);
                     
                     characterWidth = character.width;
-                }
-
-                if (nameArray[i] == "Q") {
-                    totalWidth = totalWidth + 201;
-                }
-                else { 
-                    totalWidth = totalWidth + characterWidth;
+                    
+                    if (nameArray[i] == "Q") {
+                        totalWidth = totalWidth + 201;
+                        console.log("Total Width(for,q): "+totalWidth);
+                    }
+                    else { 
+                        totalWidth = totalWidth + characterWidth;
+                        console.log("Total Width(for): "+totalWidth);
+                    }
                 }
             }
 
