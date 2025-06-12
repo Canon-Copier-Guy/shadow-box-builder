@@ -197,7 +197,7 @@
                 updateName();
                 updateRibbons();
                 updateMedals();
-            }
+            };
         }
         function updateRank() {
             const dropdown = document.getElementById('rankDropdown');
@@ -294,7 +294,7 @@
                 ctx = canvas.getContext('2d');
 
                 ctx.drawImage(selectedRank, 0, 0, selectedRank.width, selectedRank.height, (2123-(selectedRankIconWidth/2)), (239-selectedRankIconHeight), selectedRankIconWidth, selectedRankIconHeight);
-            }
+            };
         }
         
         let totalWidth = 0;
@@ -327,7 +327,7 @@
                     }
 
                     console.log("setting width of "+nameArray[i]+" to "+widths[i]);
-                }
+                };
             }
 
             let textScale = 0;
@@ -368,7 +368,7 @@
                     else { 
                         currentWidth = currentWidth + characterWidth*textScale;
                     }
-                }
+                };
             }
 
             /*textHeight = Math.round(130*scale);
@@ -479,7 +479,7 @@
 
                     //Draw medal
                     ctx.drawImage(medal, 0, 0, medal.width, medal.height, (215-(medalWidths[selectedValues[i]]/2)+((i-(3*row))*344)), (775+(525*row)), medalWidths[selectedValues[i]],  medalHeights[selectedValues[i]]);
-                }
+                };
             }
         }
         function updateRibbons() {
@@ -535,7 +535,7 @@
                     else {
                         ctx.drawImage(ribbon, 0, 0, ribbon.width, ribbon.height, 1118+(312*((i+rowOffset)-(row*3))), 775+(75*row), 312, 75);
                     }
-                }
+                };
             }
         }
         function downloadShadowBox() {
