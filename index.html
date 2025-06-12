@@ -349,86 +349,118 @@
             ctx.shadowOffsetY = 0;
         }
         function updateMedals() {
-            let selectedMedel = document.getElementById('MedalsDropdown');
-            //let medal = document.getElementById('selectedMedals');
+            let selectedMedels = document.querySelector('#MedalsDropdown');
 
-            let medals = {
-                //Strike & Crusade Ribbons
+            // Get all selected values
+            var selectedValues = Array.from(selectedMedels.options) // Convert options to an array
+                .filter(option => option.selected)      // Filter selected options
+                .map(option => option.value);           // Map to an array of values
+
+            for (let i = 0; i < selectedValues.length; i++) {
+                let medals = {
+                    //Strike & Crusade Ribbons
                 "1": "/Medals/Terminid Blitz Medal.png", //Terminid Blitz
                 "2": "/Medals/Offensive Crusade.png", //Offensive Crusade
                 "3": "/Medals/Defensive Crusade.png", //Defensive Crusade
                 "4": "/Medals/Choohe Crusade.png", //Choohe Crusade
                 "5": "/Medals/Genesis Crusade.png", //Genesis Crusade
                 "6": "/Medals/Gloom Crusade.png"  //Gloom Crusade
-            };
+                };
 
-            medalWidths = {
-                "1":  370, //Terminid Blitz
-                "2":  323, //Offensive Crusade
-                "3":  323, //Defensive Crusade
-                "4":  341, //Choohe Crusade
-                "5":  320, //Genesis Crusade
-                "6":  325, //Gloom Crusade
-            };
+                let medalWidths = {
+                    "1":  344, //Terminid Blitz
+                    "2":  302, //Offensive Crusade
+                    "3":  302, //Defensive Crusade
+                    "4":  297, //Choohe Crusade
+                    "5":  298, //Genesis Crusade
+                    "6":  303, //Gloom Crusade
+                };
 
-            medalHeights = {
-                "1":  512, //Terminid Blitz
-                "2":  512, //Offensive Crusade
-                "3":  512, //Defensive Crusade
-                "4":  512, //Choohe Crusade
-                "5":  512, //Genesis Crusade
-                "6":  512, //Gloom Crusade
-            };
+                let medalHeights = {
+                    "1":  476, //Terminid Blitz
+                    "2":  479, //Offensive Crusade
+                    "3":  479, //Defensive Crusade
+                    "4":  448, //Choohe Crusade
+                    "5":  478, //Genesis Crusade
+                    "6":  478, //Gloom Crusade
+                };
 
-            let medal = new Image();
-            medal.src = medals[selectedMedel.value];
+                let medal = new Image();
+                medal.src = medals[selectedValues[i]];
 
-            selectedMedalWidth = medalWidths[selectedMedel.value];
-            selectedMedalHeight = medalHeights[selectedMedel.value];
+                selectedMedalWidth = medalWidths[selectedValues[i]];
+                selectedMedalHeight = medalHeights[selectedValues[i]];
 
-            // Wait till image is loaded.
-            medal.onload = function () {
-                // Get Context for canvas to display to the user and draw it
-                let canvas = document.getElementById('displayBox');
-                let ctx = canvas.getContext('2d');
+                // Wait till image is loaded.
+                medal.onload = function () {
+                    // Get Context for canvas to display to the user and draw it
+                    let canvas = document.getElementById('displayBox');
+                    let ctx = canvas.getContext('2d');
 
-                //Draw medal
-                ctx.drawImage(medal, 0, 0, medal.width, medal.height, (215-(selectedMedalWidth/2))*scale, 775*scale, selectedMedalWidth*scale, 512*scale);
+                    let row = 0;
 
-                // Get context for full resolution canvas and draw it
-                canvas = document.getElementById('fullBox');
-                ctx = canvas.getContext('2d');
+                    row = Math.floor(i/3);
 
-                //Draw medal
-                ctx.drawImage(medal, 0, 0, medal.width, medal.height, (215-(selectedMedalWidth/2)), 775, selectedMedalWidth, 512);
+                    //Draw medal
+                    ctx.drawImage(medal, 0, 0, medal.width, medal.height, (215-(medalWidths[selectedValues[i]]/2)   +((i-(3*row))*344))*scale, (775+(525*row))*scale, medalWidths[selectedValues[i]]*scale,  medalHeights[selectedValues[i]]*scale);
+
+                    // Get context for full resolution canvas and draw it
+                    canvas = document.getElementById('fullBox');
+                    ctx = canvas.getContext('2d');
+
+                    //Draw medal
+                    //ctx.drawImage(medal, 0, 0, medal.width, medal.height, (215-(selectedMedalWidth/2)), 775, selectedMedalWidth, 512);
+                }
             }
-
-            console.log(document.getElementById('medalsDropdown').selectedOptions.length);
         }
         function updateRibbons() {
-            let dropdown = document.getElementById('ribbonsDropdown');
-            let ribbons = document.getElementById('selectedRibbons');
+            // Get the select element
+            let selectedRibbons = document.querySelector('#ribbonsDropdown');
 
-            let ribbon = new Image();
-            ribbon.src = dropdown.value;
+            // Get all selected values
+            var selectedValues = Array.from(selectedRibbons.options) // Convert options to an array
+                .filter(option => option.selected)      // Filter selected options
+                .map(option => option.value);           // Map to an array of values
+            
+            let rowOffset = selectedValues.length % 3;
 
-            // Wait till image is loaded.
-            ribbon.onload = function () {
-                // Get Context for canvas to display to the user and draw it
-                let canvas = document.getElementById('displayBox');
-                let ctx = canvas.getContext('2d');
-
-                //Draw ribbon
-                ctx.drawImage(ribbon, 0, 0, ribbon.width, ribbon.height, 1118*scale, 775*scale, 312*scale, 75*scale);
-
-                // Get context for full resolution canvas and draw it
-                canvas = document.getElementById('fullBox');
-                ctx = canvas.getContext('2d');
-
-                //Draw ribbon
-                ctx.drawImage(ribbon, 0, 0, ribbon.width, ribbon.height, 1118, 775, 312, 75);
+            if (rowOffset == 1) { 
+                rowOffset = 2;
             }
-            console.log(document.getElementById('ribbonsDropdown').selectedOptions.length);
+            else if (rowOffset == 2) { 
+                rowOffset = 1;
+            }
+
+            for (let i = 0; i < selectedValues.length; i++) {
+                let ribbon = new Image();
+                ribbon.src = selectedValues[i];
+
+                // Wait till image is loaded.
+                ribbon.onload = function () {
+                    // Get Context for canvas to display to the user and draw it
+                    let canvas = document.getElementById('displayBox');
+                    let ctx = canvas.getContext('2d');
+
+                    let row = Math.floor((i+rowOffset)/3);
+
+                    if (selectedValues.length % 3 == 1 && row == 0) {
+                        ctx.drawImage(ribbon, 0, 0, ribbon.width, ribbon.height, (1118+(312))*scale, 775*scale, 312*scale, 75*scale);
+                    }
+                    else if (selectedValues.length % 3 == 2 && row == 0) {
+                        ctx.drawImage(ribbon, 0, 0, ribbon.width, ribbon.height, (1118+(321*(i+0.5)))*scale, 775*scale, 312*scale, 75*scale);
+                    }
+                    else {
+                        ctx.drawImage(ribbon, 0, 0, ribbon.width, ribbon.height, (1118+(312*((i+rowOffset)-(row*3))))*scale, (775+(75*row)) *scale, 312*scale, 75*scale);
+                    }
+
+                    // Get context for full resolution canvas and draw it
+                    canvas = document.getElementById('fullBox');
+                    ctx = canvas.getContext('2d');
+
+                    //Draw ribbon
+                    //ctx.drawImage(ribbon, 0, 0, ribbon.width, ribbon.height, 1118, 775, 312, 75);
+                }
+            }
         }
         function downloadShadowBox() {
             let canvas = document.getElementById("fullBox");
