@@ -405,7 +405,7 @@
                     ctx = canvas.getContext('2d');
 
                     //Draw medal
-                    //ctx.drawImage(medal, 0, 0, medal.width, medal.height, (215-(selectedMedalWidth/2)), 775, selectedMedalWidth, 512);
+                    ctx.drawImage(medal, 0, 0, medal.width, medal.height, (215-(medalWidths[selectedValues[i]]/2)   +((i-(3*row))*344)), (775+(525*row))*scale, medalWidths[selectedValues[i]],  medalHeights[selectedValues[i]]);
                 }
             }
         }
@@ -453,8 +453,15 @@
                     canvas = document.getElementById('fullBox');
                     ctx = canvas.getContext('2d');
 
-                    //Draw ribbon
-                    //ctx.drawImage(ribbon, 0, 0, ribbon.width, ribbon.height, 1118, 775, 312, 75);
+                    if (selectedValues.length % 3 == 1 && row == 0) {
+                        ctx.drawImage(ribbon, 0, 0, ribbon.width, ribbon.height, 1118+(312), 775, 312, 75);
+                    }
+                    else if (selectedValues.length % 3 == 2 && row == 0) {
+                        ctx.drawImage(ribbon, 0, 0, ribbon.width, ribbon.height, 1118+(321*(i+0.5)), 775, 312, 75);
+                    }
+                    else {
+                        ctx.drawImage(ribbon, 0, 0, ribbon.width, ribbon.height, 1118+(312*((i+rowOffset)-(row*3))), 775+(75*row), 312, 75);
+                    }
                 }
             }
         }
