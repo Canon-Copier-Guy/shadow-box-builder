@@ -309,19 +309,15 @@
             console.log(nameArray);
 
             for(let i = 0; i < nameArray.length; i++) { 
-                let characters = {
-                    nameArray[i]: "/Letters & Numbers/"+nameArray[i]+".png"
-                };
-                
                 let character = new Image();
-                character.src = characters[nameArray[i]];
+                character.src = "/Letters & Numbers/"+nameArray[i]+".png";
 
                 console.log(i+": "+nameArray[i]);
 
                 widths[i] = character.widths;
                 
                 character.onload = function () {
-                    console.log("Loading "+nameArray[i]+"("+characters[nameArray[i]]+")");
+                    console.log("Loading "+nameArray[i]);
                     
                     if (nameArray[i] == "Q") {
                         widthsArray[i] = 201;
