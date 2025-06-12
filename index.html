@@ -301,6 +301,7 @@
             name = (detachment+document.getElementById('numberCallsign').value.toUpperCase());
             let nameLength = name.length;
             let nameArray = name.split("");
+            let widthsArray = 0;
             totalWidth = 0;
 
             console.log(nameArray);
@@ -309,28 +310,19 @@
                 let character = new Image();
                 let characterWidth = 0;
                 character.src = "/Letters & Numbers/"+nameArray[i]+".png";
-
-                console.log("set source to: /Letters & Numbers/"+nameArray[i]+".png | raw: "+character.src);
                 
                 character.onload = function () {
-                    console.log("loading "+nameArray[i]);
-                    
-                    characterWidth = character.width;
-
-                    console.log("width of "+nameArray[i]+": "+character.width);
                     
                     if (nameArray[i] == "Q") {
-                        totalWidth = totalWidth + 201;
+                        widthsArray[i] = 201;
                     }
                     else { 
-                        totalWidth = totalWidth + characterWidth;
+                        widthsArray[i] = character.width;
                     }
-                    
-                    console.log("Current Total Width: "+totalWidth);
                 }
             }
 
-            console.log("Final Total Width: "+totalWidth);
+            console.log(widthsArray);
 
             let textScale = 0;
 
