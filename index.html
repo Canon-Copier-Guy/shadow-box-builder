@@ -313,6 +313,7 @@
                 console.log("Width of "+nameArray[i]+": "+character.width);
 
                 character.onload = function () {
+                    wait(10);
                     if (nameArray[i] == "Q") {
                         totalWidth = totalWidth + 201;
                     }
@@ -342,6 +343,7 @@
                 character.src = "/Letters & Numbers/"+nameArray[i]+".png"
 
                 character.onload = function () {
+                    wait(10);
                     let canvas = document.getElementById('displayBox');
                     let ctx = canvas.getContext('2d');
 
