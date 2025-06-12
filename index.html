@@ -308,18 +308,20 @@
 
             for(let i = 0; i < nameArray.length; i++) { 
                 let character = new Image();
+                let characterWidth = 0;
                 character.src = "/Letters & Numbers/"+nameArray[i]+".png";
                 
                 character.onload = function () {
                     console.log("Width of "+nameArray[i]+": "+character.width);
                     
+                    characterWidth = character.width;
                 }
 
                 if (nameArray[i] == "Q") {
                     totalWidth = totalWidth + 201;
                 }
                 else { 
-                    totalWidth = totalWidth + character.width;
+                    totalWidth = totalWidth + characterWidth;
                 }
             }
 
