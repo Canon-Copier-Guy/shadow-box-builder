@@ -398,14 +398,14 @@
                     row = Math.floor(i/3);
 
                     //Draw medal
-                    ctx.drawImage(medal, 0, 0, medal.width, medal.height, (215-(medalWidths[selectedValues[i]]/2)   +((i-(3*row))*344))*scale, (775+(525*row))*scale, medalWidths[selectedValues[i]]*scale,  medalHeights[selectedValues[i]]*scale);
+                    ctx.drawImage(medal, 0, 0, medal.width, medal.height, (215-(medalWidths[selectedValues[i]]/2)+((i-(3*row))*344))*scale, (775+(525*row))*scale, medalWidths[selectedValues[i]]*scale,  medalHeights[selectedValues[i]]*scale);
 
                     // Get context for full resolution canvas and draw it
                     canvas = document.getElementById('fullBox');
                     ctx = canvas.getContext('2d');
 
                     //Draw medal
-                    ctx.drawImage(medal, 0, 0, medal.width, medal.height, (215-(medalWidths[selectedValues[i]]/2)   +((i-(3*row))*344)), (775+(525*row))*scale, medalWidths[selectedValues[i]],  medalHeights[selectedValues[i]]);
+                    ctx.drawImage(medal, 0, 0, medal.width, medal.height, (215-(medalWidths[selectedValues[i]]/2)+((i-(3*row))*344)), (775+(525*row)), medalWidths[selectedValues[i]],  medalHeights[selectedValues[i]]);
                 }
             }
         }
