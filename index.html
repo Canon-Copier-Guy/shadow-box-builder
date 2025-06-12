@@ -186,8 +186,6 @@
                 //Draw background
                 ctx.drawImage(selectedBackground, 0, 0, selectedBackground.width, selectedBackground.height, 0, 0, 2236*scale, 2796*scale);
 
-                console.log(selectedBackground.height);
-
                 // Get context for full resolution canvas and draw it
                 canvas = document.getElementById('fullBox');
                 ctx = canvas.getContext('2d');
@@ -311,24 +309,28 @@
                 let character = new Image();
                 let characterWidth = 0;
                 character.src = "/Letters & Numbers/"+nameArray[i]+".png";
+
+                console.log("set source to: /Letters & Numbers/"+nameArray[i]+".png | raw: "+character.src);
                 
                 character.onload = function () {
-                    console.log("Width of "+nameArray[i]+": "+character.width);
+                    console.log("loading "+nameArray[i]);
                     
                     characterWidth = character.width;
+
+                    console.log("width of "+nameArray[i]+": "+character.width);
                     
                     if (nameArray[i] == "Q") {
                         totalWidth = totalWidth + 201;
-                        console.log("Total Width(for,q): "+totalWidth);
                     }
                     else { 
                         totalWidth = totalWidth + characterWidth;
-                        console.log("Total Width(for): "+totalWidth);
                     }
+                    
+                    console.log("Current Total Width: "+totalWidth);
                 }
             }
 
-            console.log("Total Width: "+totalWidth);
+            console.log("Final Total Width: "+totalWidth);
 
             let textScale = 0;
 
