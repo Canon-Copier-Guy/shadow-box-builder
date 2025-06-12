@@ -298,11 +298,6 @@
             name = (detachment+document.getElementById('numberCallsign').value.toUpperCase());
             let nameLength = name.length;
 
-            // Measure the width of the text
-            /*textHeight = 130*scale;
-            ctx.font = (textHeight+'px Ubuntu Mono');
-            textWidth = ctx.measureText(name).width;*/
-
             textHeight = Math.round(130*scale);
             ctx.font = (textHeight+'px Ubuntu Mono');
             textWidth = ctx.measureText(name).width;
@@ -329,6 +324,7 @@
 
             ctx.shadowOffsetX = 0;
             ctx.shadowOffsetY = 0;
+            ctx.shadowBlur = 0;
 
             canvas = document.getElementById('fullBox');
             ctx = canvas.getContext('2d');
