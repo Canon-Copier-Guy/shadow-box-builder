@@ -313,17 +313,14 @@
                 character.onload = function () {
                     console.log("Width of "+nameArray[i]+": "+character.width);
                     
-                    if (nameArray[i] == "Q") {
-                        //totalWidth = totalWidth + 201;
-                    }
-                    else { 
-                        //totalWidth = totalWidth + character.width;
-                    }
-
-                    totalWidth = 100;
                 }
 
-                //totalWidth = 100;
+                if (nameArray[i] == "Q") {
+                    totalWidth = totalWidth + 201;
+                }
+                else { 
+                    totalWidth = totalWidth + character.width;
+                }
             }
 
             console.log("Total Width: "+totalWidth);
