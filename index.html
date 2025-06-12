@@ -293,12 +293,100 @@
             }
         }
         function updateName() {
-            let canvas = document.getElementById('displayBox');
-            let ctx = canvas.getContext('2d');
             name = (detachment+document.getElementById('numberCallsign').value.toUpperCase());
             let nameLength = name.length;
+            nameArray = name.split("");
 
-            textHeight = Math.round(130*scale);
+            for (let i = 0; i < nameArray.length; i++) {
+                let character = new Image();
+                character.src = "/Letters & Numbers/"+nameArray[i]+".png"
+
+                characterWidths = {
+                    "A": 154,
+                    "B": 154,
+                    "C": 154,
+                    "D": 154,
+                    "E": 154,
+                    "F": 154,
+                    "G": 154,
+                    "H": 154,
+                    "I": 154,
+                    "J": 154,
+                    "K": 154,
+                    "L": 154,
+                    "M": 185,
+                    "N": 154,
+                    "O": 177,
+                    "P": 154,
+                    "Q": 154,
+                    "R": 154,
+                    "S": 177,
+                    "T": 154,
+                    "U": 177,
+                    "X": 154,
+                    "Y": 154,
+                    "Z": 154,
+                    "0": 154,
+                    "1": 154,
+                    "2": 154,
+                    "3": 154,
+                    "4": 154,
+                    "5": 154,
+                    "6": 154,
+                    "7": 154,
+                    "8": 154,
+                    "9": 185
+                };
+
+                characterHeights = {
+                    "A": 154,
+                    "B": 154,
+                    "C": 154,
+                    "D": 154,
+                    "E": 154,
+                    "F": 154,
+                    "G": 154,
+                    "H": 154,
+                    "I": 154,
+                    "J": 154,
+                    "K": 154,
+                    "L": 154,
+                    "M": 185,
+                    "N": 154,
+                    "O": 177,
+                    "P": 154,
+                    "Q": 154,
+                    "R": 154,
+                    "S": 177,
+                    "T": 154,
+                    "U": 177,
+                    "X": 154,
+                    "Y": 154,
+                    "Z": 154,
+                    "0": 154,
+                    "1": 154,
+                    "2": 154,
+                    "3": 154,
+                    "4": 154,
+                    "5": 154,
+                    "6": 154,
+                    "7": 154,
+                    "8": 154,
+                    "9": 185
+                };
+
+                let canvas = document.getElementById('displayBox');
+                let ctx = canvas.getContext('2d');
+
+                ctx.drawImage(selectedRank, 0, 0, letterOrNumber.width, letterOrNumber.height, (2123-(selectedRankIconWidth/2)), (239-selectedRankIconHeight), selectedRankIconWidth, selectedRankIconHeight);
+
+                canvas = document.getElementById('fullBox');
+                ctx = canvas.getContext('2d');
+
+                ctx.drawImage(selectedRank, 0, 0, letterOrNumber.width, letterOrNumber.height, (2123-(selectedRankIconWidth/2)), (239-selectedRankIconHeight), selectedRankIconWidth, selectedRankIconHeight);
+            }
+
+            /*textHeight = Math.round(130*scale);
             ctx.font = (textHeight+'px Ubuntu Mono');
             textWidth = ctx.measureText(name).width;
             ctx.fillStyle = "gold";
@@ -342,7 +430,7 @@
             ctx.fillText(name, 1118-textWidth/2, 557+textHeight/4);
 
             ctx.shadowOffsetX = 0;
-            ctx.shadowOffsetY = 0;
+            ctx.shadowOffsetY = 0;*/
         }
         function updateMedals() {
             let selectedMedels = document.querySelector('#MedalsDropdown');
@@ -355,12 +443,12 @@
             for (let i = 0; i < selectedValues.length; i++) {
                 let medals = {
                     //Strike & Crusade Ribbons
-                "1": "/Medals/Terminid Blitz Medal.png", //Terminid Blitz
-                "2": "/Medals/Offensive Crusade.png", //Offensive Crusade
-                "3": "/Medals/Defensive Crusade.png", //Defensive Crusade
-                "4": "/Medals/Choohe Crusade.png", //Choohe Crusade
-                "5": "/Medals/Genesis Crusade.png", //Genesis Crusade
-                "6": "/Medals/Gloom Crusade.png"  //Gloom Crusade
+                    "1": "/Medals/Terminid Blitz Medal.png", //Terminid Blitz
+                    "2": "/Medals/Offensive Crusade.png", //Offensive Crusade
+                    "3": "/Medals/Defensive Crusade.png", //Defensive Crusade
+                    "4": "/Medals/Choohe Crusade.png", //Choohe Crusade
+                    "5": "/Medals/Genesis Crusade.png", //Genesis Crusade
+                    "6": "/Medals/Gloom Crusade.png"  //Gloom Crusade
                 };
 
                 let medalWidths = {
