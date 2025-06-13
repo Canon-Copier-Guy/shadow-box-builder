@@ -307,6 +307,8 @@
 
             console.log(nameArray);
 
+            let hold = 1;
+
             for(let i = 0; i < nameArray.length; i++) { //for every character, get the width and add it the the "widths" array, and set the totalWidth
                 let character = new Image();
                 character.src = "/Letters & Numbers/"+nameArray[i]+".png";
@@ -320,14 +322,27 @@
                     
                     if (nameArray[i] == "Q") {
                         widths[i] = 201;
+                        totalWidth = totalWidth + 201;
                     }
                     else { 
                         widths[i] = character.width;
+                        totalWidth = totalWidth + character.width;
                     }
 
                     console.log("setting width of "+nameArray[i]+" to "+widths[i]);
                 };
+
+                if (i == nameArray.length - 1) {
+                    hold = 0;
+                }
             }
+
+            while (hold == 1) { //wait for all images to be loaded and their widths to be calculated before continuing
+                
+            }
+
+            console.log("Total Width: "+totalWidth);
+            console.log("Widths: "+widths);
 
             let textScale = 0;
 
