@@ -303,6 +303,31 @@
             let widths; //this will store the widths of each character for placment within the name
             let totalWidth = 0; //this stores the total width of the characters to determine scaling and placment of the name as a whole
 
+            let characterWidths = {
+                "0": 0,
+                "1":  154, // Cadet
+                "2":  154, // Space Cadet
+                "3":  154, // Sergeant
+                "4":  154, // Master Sergeant
+                "5":  154, // Chief
+                "6":  154, // Space Chief Prime
+                "7":  154, // Death Captain
+                "8":  154, // Marshal
+                "9":  154, // Star Marshal
+                "10": 154, // Admiral
+                "11": 154, // Skull Admiral
+                "12": 154, // Fleet Admiral
+                "13": 185, // Admirable Admiral (177 for realz, don't have actial icon)
+                "14": 154, // Commander
+                "15": 177, // Galactic Commander
+                "16": 154, // Hell Commander
+                "17": 154, // General
+                "18": 154, // 5-Star General
+                "19": 177, // 10-Star General
+                "20": 154, // Private
+                "21": 177  // Super Private
+            };
+
             console.log(nameArray);
 
             let hold = 1;
@@ -333,10 +358,6 @@
                 if (i == nameArray.length - 1) {
                     hold = 0;
                 }
-            }
-
-            while (hold == 1) { //wait for all images to be loaded and their widths to be calculated before continuing
-                console.log("holding...");
             }
 
             console.log("Total Width: "+totalWidth);
