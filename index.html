@@ -297,13 +297,11 @@
             };
         }
         
-        let totalWidth = 0;
-        
         function updateName() {
             name = (detachment+document.getElementById('numberCallsign').value.toUpperCase());
             let nameArray = name.split(""); //split each character of the entered number and callsign into an array
             let widths; //this will store the widths of each character for placment within the name
-            totalWidth = 0; //this stores the total width of the characters to determine scaling and placment of the name as a whole
+            let totalWidth = 0; //this stores the total width of the characters to determine scaling and placment of the name as a whole
 
             console.log(nameArray);
 
@@ -338,7 +336,7 @@
             }
 
             while (hold == 1) { //wait for all images to be loaded and their widths to be calculated before continuing
-                
+                console.log("holding...");
             }
 
             console.log("Total Width: "+totalWidth);
