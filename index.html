@@ -360,7 +360,7 @@
 
             /*let canvas = document.getElementById('displayBox');
             let ctx = canvas.getContext('2d');
-            name = (detachment+document.getElementById('numberCallsign').value.toUpperCase());
+            name = (detachment+document.getElementById('numberCallsign').value.toUpperCase());*/
             let nameArray = name.split(""); //split each character of the entered number and callsign into elements of an array
             let totalWidth = 0; //this stores the total width of the characters to determine scaling and placment of the name as a whole
             let characterPositions;
@@ -413,11 +413,17 @@
 
             //scale down letters if the name is too wide
             let textScale = 1;
-            
+            let rawWidth = totalWidth;
+                
             if (totalWidth > 642) {
                 textScale = 642/totalWidth;
+                totalWidth = 642;
             }
-            
+
+            console.log(nameArray);
+            console.log(characterPositions);
+            console.log("Total Width: "+totalWidth+"Raw Width: "+rawWidth+" | Text Scale: "+textScale);
+            /*
             for (let i = 0; i < nameArray.length; i++) { //load in the image of every character, and draw it
                 let character = new Image();
                 if (nameArray[i] == " ") {
