@@ -429,7 +429,7 @@
                 let hyphenCompensation = 0;
                     
                 if (nameArray[i] == " ") {
-                    character.src = "/Letters & Numbers/"+_+".png";
+                    character.src = "/Letters & Numbers/_.png";
                 }
                 else {
                     character.src = "/Letters & Numbers/"+nameArray[i]+".png";
@@ -446,7 +446,7 @@
                     if (nameArray[i] == " ") {
                         
                     }
-                    else {
+                    //else {
                         //ctx.drawImage(img, sx, sy, source width, source height, dx, dy, destination width, destination height);
                         ctx.drawImage(character, 0, 0, character.width, character.height, (1118-(totalWidth/2)+(characterPositions[i]*textScale))*scale, (557-(100*textScale)+hyphenCompensation)*scale, character.width*textScale*scale, character.height*textScale*scale);
 
@@ -454,7 +454,7 @@
                         ctx = canvas.getContext('2d');
 
                         ctx.drawImage(character, 0, 0, character.width, character.height, 1118-(totalWidth/2)+(characterPositions[i]*textScale), 557-(100*textScale), character.width*textScale, character.height*textScale);
-                    }
+                    //}
                 };
             }/**/
         }
