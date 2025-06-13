@@ -298,7 +298,36 @@
         }
         
         function updateName() {
+            let canvas = document.getElementById('displayBox');
+            let ctx = canvas.getContext('2d');
             name = (detachment+document.getElementById('numberCallsign').value.toUpperCase());
+            let nameLength = name.length;
+
+            textHeight = Math.round(130*scale);
+            ctx.font = (textHeight+'px Ubuntu Mono');
+            ctx.fillStyle = "gold";
+            //ctx.shadowColor = "black";
+            //ctx.shadowOffsetX = 5;
+            //ctx.shadowOffsetY = 5;
+            //ctx.shadowBlur = 10;
+            textWidth = ctx.measureText(name).width;
+
+            // Calculate the height of the text based on font size and line height
+
+            if (textWidth >= 642*scale) {
+                textHeight = Math.round(((642*scale)/nameLength)*2);
+                ctx.font = (textHeight+'px Ubuntu Mono');
+                textWidth = 642*scale;
+            }
+            else {
+                ctx.font = (textHeight+'px Ubuntu Mono');
+                textWidth = ctx.measureText(name).width;
+            }
+
+            //Draw text
+            ctx.fillText(name, (1118*scale)-textWidth/2, (557*scale)+textHeight/4);
+            
+            /*name = (detachment+document.getElementById('numberCallsign').value.toUpperCase());
             let nameArray = name.split(""); //split each character of the entered number and callsign into an array
             let widths; //this will store the widths of each character for placment within the name
             let totalWidth = 0; //this stores the total width of the characters to determine scaling and placment of the name as a whole
@@ -403,7 +432,7 @@
                         currentWidth = currentWidth + characterWidth*textScale;
                     }
                 };
-            }
+            }*/
         }
         function updateMedals() {
             let selectedMedels = document.querySelector('#MedalsDropdown');
