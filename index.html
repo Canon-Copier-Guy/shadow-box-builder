@@ -448,7 +448,7 @@
                     canvas = document.getElementById('fullBox');
                     ctx = canvas.getContext('2d');
 
-                    ctx.drawImage(character, 0, 0, character.width, character.height, 1118-(totalWidth/2)+(characterPositions[i]*textScale), 557-(100*textScale), character.width*textScale, character.height*textScale);
+                    ctx.drawImage(character, 0, 0, character.width, character.height, 1118-(totalWidth/2)+(characterPositions[i]*textScale), 557-(100*textScale)+hyphenCompensation, character.width*textScale, character.height*textScale);
                 };
             }/**/
         }
