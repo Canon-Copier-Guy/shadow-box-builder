@@ -298,7 +298,7 @@
         }
         
         function updateName() {
-            /*let canvas = document.getElementById('displayBox');
+            let canvas = document.getElementById('displayBox');
             let ctx = canvas.getContext('2d');
             name = (detachment+document.getElementById('numberCallsign').value.toUpperCase());
             let nameLength = name.length;
@@ -354,11 +354,11 @@
 
             ctx.shadowOffsetX = 0;
             ctx.shadowOffsetY = 0;
-            ctx.shadowOffsetY = 0;*/
+            ctx.shadowOffsetY = 0;/**/
 
             //--------------------------------------------------------------------------------------------------------------------------
 
-            let canvas = document.getElementById('displayBox');
+            /*let canvas = document.getElementById('displayBox');
             let ctx = canvas.getContext('2d');
             name = (detachment+document.getElementById('numberCallsign').value.toUpperCase());
             let nameArray = name.split(""); //split each character of the entered number and callsign into elements of an array
@@ -417,9 +417,6 @@
             if (totalWidth > 642) {
                 textScale = 642/totalWidth;
             }
-            else {
-                textScale = 1;
-            }
             
             for (let i = 0; i < nameArray.length; i++) { //load in the image of every character, and draw it
                 let character = new Image();
@@ -442,7 +439,7 @@
 
                     ctx.drawImage(character, 0, 0, character.width, character.height, 1118-(totalWidth/2)+characterPostions[i], 557-(100*textScale), character.width*textScale, character.height*textScale);
                 };
-            }
+            }/**/
         }
         function updateMedals() {
             let selectedMedels = document.querySelector('#MedalsDropdown');
