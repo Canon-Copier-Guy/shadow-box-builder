@@ -298,7 +298,7 @@
         }
         
         function updateName() {
-            let canvas = document.getElementById('displayBox');
+            /*let canvas = document.getElementById('displayBox');
             let ctx = canvas.getContext('2d');
             name = (detachment+document.getElementById('numberCallsign').value.toUpperCase());
             let nameLength = name.length;
@@ -354,114 +354,95 @@
 
             ctx.shadowOffsetX = 0;
             ctx.shadowOffsetY = 0;
-            ctx.shadowOffsetY = 0;
-            
-            /*name = (detachment+document.getElementById('numberCallsign').value.toUpperCase());
-            let nameArray = name.split(""); //split each character of the entered number and callsign into an array
-            let widths; //this will store the widths of each character for placment within the name
+            ctx.shadowOffsetY = 0;*/
+
+            //--------------------------------------------------------------------------------------------------------------------------
+
+            let canvas = document.getElementById('displayBox');
+            let ctx = canvas.getContext('2d');
+            name = (detachment+document.getElementById('numberCallsign').value.toUpperCase());
+            let nameArray = name.split(""); //split each character of the entered number and callsign into elements of an array
             let totalWidth = 0; //this stores the total width of the characters to determine scaling and placment of the name as a whole
+            let characterPositions;
 
-            let characterWidths = {
-                "0": 0,
-                "1":  154, // Cadet
-                "2":  154, // Space Cadet
-                "3":  154, // Sergeant
-                "4":  154, // Master Sergeant
-                "5":  154, // Chief
-                "6":  154, // Space Chief Prime
-                "7":  154, // Death Captain
-                "8":  154, // Marshal
-                "9":  154, // Star Marshal
-                "10": 154, // Admiral
-                "11": 154, // Skull Admiral
-                "12": 154, // Fleet Admiral
-                "13": 185, // Admirable Admiral (177 for realz, don't have actial icon)
-                "14": 154, // Commander
-                "15": 177, // Galactic Commander
-                "16": 154, // Hell Commander
-                "17": 154, // General
-                "18": 154, // 5-Star General
-                "19": 177, // 10-Star General
-                "20": 154, // Private
-                "21": 177  // Super Private
-            };
-
-            console.log(nameArray);
-
-            let hold = 1;
-
-            for(let i = 0; i < nameArray.length; i++) { //for every character, get the width and add it the the "widths" array, and set the totalWidth
-                let character = new Image();
-                character.src = "/Letters & Numbers/"+nameArray[i]+".png";
-
-                console.log(i+": "+nameArray[i]);
-
-                widths[i] = character.widths;
-                
-                character.onload = function () {
-                    console.log("Loading "+nameArray[i]);
-                    
-                    if (nameArray[i] == "Q") {
-                        widths[i] = 201;
-                        totalWidth = totalWidth + 201;
-                    }
-                    else { 
-                        widths[i] = character.width;
-                        totalWidth = totalWidth + character.width;
-                    }
-
-                    console.log("setting width of "+nameArray[i]+" to "+widths[i]);
+            for (let i = 0; i < nameArray.length; i++) {
+                let characterWidths = {
+                    "0": 132,
+                    "1": 82,
+                    "2": 132,
+                    "3": 118,
+                    "4": 143,
+                    "5": 115,
+                    "6": 128,
+                    "7": 126,
+                    "8": 124,
+                    "9": 123,
+                    "A": 197,
+                    "B": 141,
+                    "C": 176,
+                    "D": 199,
+                    "E": 122,
+                    "F": 121,
+                    "G": 192,
+                    "H": 207,
+                    "I": 79,
+                    "J": 81,
+                    "K": 197,
+                    "L": 129,
+                    "M": 256,
+                    "N": 205,
+                    "O": 201,
+                    "P": 135,
+                    "Q": 201,
+                    "R": 199,
+                    "S": 106,
+                    "T": 167,
+                    "U": 196,
+                    "V": 206,
+                    "W": 286,
+                    "X": 185,
+                    "Y": 191,
+                    "Z": 154,
+                    " ": 93,
+                    "-": 78 //height of 31
                 };
 
-                if (i == nameArray.length - 1) {
-                    hold = 0;
-                }
-            }
+                characterPositions[i] = totalWidth;
+                totalWidth = totalWidth + characterWidths[nameArray[i]];
+            {
 
-            console.log("Total Width: "+totalWidth);
-            console.log("Widths: "+widths);
-
-            let textScale = 0;
-
-            //scale down the characters in the name if it is too large
+            //scale down letters if the name is too wide
+            let textScale = 1;
+            
             if (totalWidth > 642) {
                 textScale = 642/totalWidth;
             }
             else {
                 textScale = 1;
             }
-
-            console.log("Text Scale: "+textScale);
-
-            let currentWidth = 0;
             
             for (let i = 0; i < nameArray.length; i++) { //load in the image of every character, and draw it
                 let character = new Image();
-                character.src = "/Letters & Numbers/"+nameArray[i]+".png";
+                if (nameArray[i] == " ") {
+                    character.src = "/Letters & Numbers/"+_+".png";
+                }
+                else {
+                    character.src = "/Letters & Numbers/"+nameArray[i]+".png";
+                }
 
                 character.onload = function () {
                     let canvas = document.getElementById('displayBox');
                     let ctx = canvas.getContext('2d');
 
-                    let characterWidth = character.width;
-                    let characterHeight = character.height;
-
                     //ctx.drawImage(img, sx, sy, source width, source height, dx, dy, destination width, destination height);
-                    ctx.drawImage(character, 0, 0, characterWidth, character.height, (1118-(totalWidth/2)+currentWidth)*scale, (557-(100*textScale))*scale, characterWidth*textScale*scale, characterHeight*textScale*scale);
+                    ctx.drawImage(character, 0, 0, character.width, character.height, (1118-(totalWidth/2)+characterPostions[i])*scale, (557-(100*textScale))*scale, character.width*textScale*scale, character.height*textScale*scale);
 
                     canvas = document.getElementById('fullBox');
                     ctx = canvas.getContext('2d');
 
-                    ctx.drawImage(character, 0, 0, character.width, character.height, (1118-(totalWidth/2)+currentWidth), (557-(100*textScale)), character.width*textScale, character.height*textScale);
-
-                    if (nameArray[i] == "Q") {
-                        currentWidth = currentWidth + 201;
-                    }
-                    else { 
-                        currentWidth = currentWidth + characterWidth*textScale;
-                    }
+                    ctx.drawImage(character, 0, 0, character.width, character.height, 1118-(totalWidth/2)+characterPostions[i], 557-(100*textScale), character.width*textScale, character.height*textScale);
                 };
-            }*/
+            }
         }
         function updateMedals() {
             let selectedMedels = document.querySelector('#MedalsDropdown');
