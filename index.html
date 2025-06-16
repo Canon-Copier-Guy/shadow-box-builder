@@ -175,7 +175,7 @@
             badge = new Image();
 
             let canvas = document.getElementById('displayBox');
-            let ctxUpload = canvas.getContext('2d');
+            let ctx = canvas.getContext('2d');
 
             img.onload = function () {
                 //drawImage(img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
@@ -190,12 +190,12 @@
                 trueWidth = badge.width*badgeScale;
                 trueHeight = badge.height*badgeScale;
 
-                ctxUpload.drawImage(badge, 0, 0, badge.width, badge.height, (1118-(trueWidth/2))*scale, (172-(trueHeight/2))*scale, trueWidth*scale, trueHeight*scale);
+                ctx.drawImage(badge, 0, 0, badge.width, badge.height, (1118-(trueWidth/2))*scale, (172-(trueHeight/2))*scale, trueWidth*scale, trueHeight*scale);
 
                 canvas = document.getElementById('fullBox');
-                ctxUpload = canvas.getContext('2d');
+                ctx = canvas.getContext('2d');
 
-                ctxUpload.drawImage(badge, 0, 0, badge.width, badge.height, (1118-(trueWidth/2)), (172-(trueHeight/2)), trueWidth, trueHeight);
+                ctx.drawImage(badge, 0, 0, badge.width, badge.height, (1118-(trueWidth/2)), (172-(trueHeight/2)), trueWidth, trueHeight);
             };
             badge.src = URL.createObjectURL(file);
         });
@@ -237,7 +237,7 @@
 
                 //Draw background
                 ctx.drawImage(selectedBackground, 0, 0, selectedBackground.width, selectedBackground.height, 0, 0, 2236*scale, 2796*scale);
-                ctxUpload.drawImage(badge, 0, 0, badge.width, badge.height, (1118-(trueWidth/2))*scale, (172-(trueHeight/2))*scale, trueWidth*scale, trueHeight*scale);
+                ctx.drawImage(badge, 0, 0, badge.width, badge.height, (1118-(trueWidth/2))*scale, (172-(trueHeight/2))*scale, trueWidth*scale, trueHeight*scale);
 
                 // Get context for full resolution canvas and draw it
                 canvas = document.getElementById('fullBox');
@@ -245,7 +245,7 @@
 
                 //Draw background
                 ctx.drawImage(selectedBackground, 0, 0, selectedBackground.width, selectedBackground.height, 0, 0, 2236, 2796);
-                ctxUpload.drawImage(badge, 0, 0, badge.width, badge.height, (1118-(trueWidth/2)), (172-(trueHeight/2)), trueWidth, trueHeight);
+                ctx.drawImage(badge, 0, 0, badge.width, badge.height, (1118-(trueWidth/2)), (172-(trueHeight/2)), trueWidth, trueHeight);
                 
                 updateRank();
                 updateName();
