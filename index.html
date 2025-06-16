@@ -110,9 +110,9 @@
         <option value="6">Gloom Crusade</option>
     </select>
 
-    <input id="numberCallsign" type="text" placeholder="Insert number and Callsign" onchange="updateBackground()">
+    <input id="numberCallsign" type="text" placeholder="Insert number and Callsign" onchange="updateBackground()"/>
 
-    <input id="downloadButton" type="button" value="Download Shadow Box" onclick="downloadShadowBox();" />
+    <input id="downloadButton" type="button" value="Download Shadow Box" onclick="downloadShadowBox();"/>
 
     <br></br>
 
@@ -122,9 +122,9 @@
 
     <br></br>
     
-    <input type="file" id="upload" accept="image/*">
-    <input type="button" value="Increase (+) Badge Size" onclick="increaseBadgeSize();">
-    <input type="button" value="Decrease (-) Badge Size" onclick="decreaseBadgeSize();">
+    <input type="file" id="upload" accept="image/*"/>
+    <input type="button" value="Increase (+) Badge Size" onclick="increaseBadgeSize();"/>
+    <input type="button" value="Decrease (-) Badge Size" onclick="decreaseBadgeSize();"/>
 
     <canvas id="fullBox" hidden></canvas>
 
@@ -202,10 +202,12 @@
 
         function increaseBadgeSize() {
             badgeScale = badgeScale + 0.1;
+            updateBackground();
         }
 
         function decreaseBadgeSize() {
             badgeScale = badgeScale - 0.1;
+            updateBackground();
         }
         
         function updateBackground() {
