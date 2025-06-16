@@ -114,15 +114,17 @@
 
     <input id="downloadButton" type="button" value="Download Shadow Box" onclick="downloadShadowBox();" />
 
-    <br>
+    <br></br>
 
     </div>
 
-    <canvas class="displayBox" id="displayBox"></canvas>
+    <canvas class="displayBox" id="displayBox" style="border:1px solid #000000;"></canvas>
 
-    <br>
+    <br></br>
     
     <input type="file" id="upload" accept="image/*">
+    <input type="button" value="Increase (+) Badge Size" onclick="increaseBadgeSize();">
+    <input type="button" value="Decrease (-) Badge Size" onclick="decreaseBadgeSize();">
 
     <canvas id="fullBox" hidden></canvas>
 
@@ -197,6 +199,14 @@
             badge.src = URL.createObjectURL(file);
         });
 
+        function increaseBadgeSize() {
+            badgeScale = badgeScale + 0.1;
+        }
+
+        function decreaseBadgeSize() {
+            badgeScale = badgeScale - 0.1;
+        }
+        
         function updateBackground() {
             let dropdown = document.getElementById('backgroundDropdown');
             let background = document.getElementById('selectedBackground');
@@ -628,7 +638,7 @@
             if ((window.innerHeight-document.getElementById("theDiv").offsetHeight-60) > (window.innerWidth-40)*2796/2236) {
                 scale = ((window.innerWidth-40)/2236);
             }
-            if ((window.innerHeight-document.getElementById("theDiv").offsetHeight-60) <= (window.innerWidth-40)*2796/2236) { 
+            if ((window.innerHeight-document.getElementById("theDiv").offsetHeight-60) <= (window.innerWidth-140)*2796/2236) { 
                 scale = ((window.innerHeight-document.getElementById("theDiv").offsetHeight-60)/2796);
             }
 
