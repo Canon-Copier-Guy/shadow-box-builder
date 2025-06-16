@@ -120,6 +120,8 @@
 
     <canvas class="displayBox" id="displayBox"></canvas>
 
+    <input type="file" id="upload" accept="image/*">
+
     <canvas id="fullBox" hidden></canvas>
 
     <script>
@@ -156,6 +158,41 @@
 
         document.getElementById('numberCallsign').addEventListener('input', function (event) {
             event.target.value = event.target.value.replace(/[^a-zA-Z0-9 ]/g, '');
+        });
+
+        document.getElementById('upload').addEventListener('change', function (e) {
+            let file = e.target.files[0];
+            if (!file) return;
+
+            let img = new Image();
+
+            let canvas = document.getElementById('displayBox');
+            let ctxUpload = canvas.getContext('2d');
+
+            img.onload = function () {
+                //drawImage(img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
+
+                if (img.width*(334/408) > img.height) {
+                    badgeScale = 408/img.width;
+                }
+                else if (img.width*(334/408) <= img.height) {
+                    badgeScale = 334/img.height;
+                }
+
+                let trueWidth = img.width*badgeScale;
+                let trueHeight = img.height*badgeScale;
+
+                //let trueWidth = img.width;
+                //let trueHeight = img.height;
+
+                ctxUpload.drawImage(img, 0, 0, img.width, img.height, (1118-(trueWidth/2))*scale, (172-(trueHeight/2))*scale, trueWidth*scale, trueHeight*scale);
+
+                canvas = document.getElementById('fullBox');
+                ctxUpload = canvas.getContext('2d');
+
+                ctxUpload.drawImage(img, 0, 0, img.width, img.height, (1118-(trueWidth/2)), (172-(trueHeight/2)),   trueWidth, trueHeight);
+            };
+            img.src = URL.createObjectURL(file);
         });
 
         function updateBackground() {
