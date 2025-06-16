@@ -114,12 +114,14 @@
 
     <input id="downloadButton" type="button" value="Download Shadow Box" onclick="downloadShadowBox();" />
 
-    <br></br>
+    <br>
 
     </div>
 
     <canvas class="displayBox" id="displayBox"></canvas>
 
+    <br>
+    
     <input type="file" id="upload" accept="image/*">
 
     <canvas id="fullBox" hidden></canvas>
@@ -146,6 +148,9 @@
         var name = "";
         var textWidth;
         var textHeight;
+        var badge = "";
+        var trueWidth = 0;
+        var trueHeight = 0;
 
         document.getElementById('displayBox').style.width = 2236*scale;
         document.getElementById('displayBox').style.height = 2796*scale;
@@ -164,7 +169,7 @@
             let file = e.target.files[0];
             if (!file) return;
 
-            let img = new Image();
+            badge = new Image();
 
             let canvas = document.getElementById('displayBox');
             let ctxUpload = canvas.getContext('2d');
@@ -172,27 +177,24 @@
             img.onload = function () {
                 //drawImage(img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
 
-                if (img.width*(334/408) > img.height) {
+                if (badge.width*(334/408) > badge.height) {
                     badgeScale = 408/img.width;
                 }
                 else if (img.width*(334/408) <= img.height) {
-                    badgeScale = 334/img.height;
+                    badgeScale = 334/badge.height;
                 }
 
-                let trueWidth = img.width*badgeScale;
-                let trueHeight = img.height*badgeScale;
+                trueWidth = badge.width*badgeScale;
+                trueHeight = badge.height*badgeScale;
 
-                //let trueWidth = img.width;
-                //let trueHeight = img.height;
-
-                ctxUpload.drawImage(img, 0, 0, img.width, img.height, (1118-(trueWidth/2))*scale, (172-(trueHeight/2))*scale, trueWidth*scale, trueHeight*scale);
+                ctxUpload.drawImage(badge, 0, 0, badge.width, badge.height, (1118-(trueWidth/2))*scale, (172-(trueHeight/2))*scale, trueWidth*scale, trueHeight*scale);
 
                 canvas = document.getElementById('fullBox');
                 ctxUpload = canvas.getContext('2d');
 
-                ctxUpload.drawImage(img, 0, 0, img.width, img.height, (1118-(trueWidth/2)), (172-(trueHeight/2)),   trueWidth, trueHeight);
+                ctxUpload.drawImage(badge, 0, 0, badge.width, badge.height, (1118-(trueWidth/2)), (172-(trueHeight/2)), trueWidth, trueHeight);
             };
-            img.src = URL.createObjectURL(file);
+            badge.src = URL.createObjectURL(file);
         });
 
         function updateBackground() {
@@ -222,6 +224,7 @@
 
                 //Draw background
                 ctx.drawImage(selectedBackground, 0, 0, selectedBackground.width, selectedBackground.height, 0, 0, 2236*scale, 2796*scale);
+                ctxUpload.drawImage(badge, 0, 0, badge.width, badge.height, (1118-(trueWidth/2))*scale, (172-(trueHeight/2))*scale, trueWidth*scale, trueHeight*scale);
 
                 // Get context for full resolution canvas and draw it
                 canvas = document.getElementById('fullBox');
@@ -229,6 +232,7 @@
 
                 //Draw background
                 ctx.drawImage(selectedBackground, 0, 0, selectedBackground.width, selectedBackground.height, 0, 0, 2236, 2796);
+                ctxUpload.drawImage(badge, 0, 0, badge.width, badge.height, (1118-(trueWidth/2)), (172-(trueHeight/2)), trueWidth, trueHeight);
                 
                 updateRank();
                 updateName();
