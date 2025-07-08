@@ -168,38 +168,6 @@
             event.target.value = event.target.value.replace(/[^a-zA-Z0-9 ]/g, '');
         });
 
-        document.getElementById('upload').addEventListener('change', function (e) {
-            let file = e.target.files[0];
-            if (!file) return;
-
-            badge = new Image();
-
-            let canvas = document.getElementById('displayBox');
-            let ctx = canvas.getContext('2d');
-
-            img.onload = function () {
-                //drawImage(img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
-
-                if (badge.width*(334/408) > badge.height) {
-                    badgeScale = 408/img.width;
-                }
-                else if (img.width*(334/408) <= img.height) {
-                    badgeScale = 334/badge.height;
-                }
-
-                trueWidth = badge.width*badgeScale;
-                trueHeight = badge.height*badgeScale;
-
-                ctx.drawImage(badge, 0, 0, badge.width, badge.height, (1118-(trueWidth/2))*scale, (172-(trueHeight/2))*scale, trueWidth*scale, trueHeight*scale);
-
-                canvas = document.getElementById('fullBox');
-                ctx = canvas.getContext('2d');
-
-                ctx.drawImage(badge, 0, 0, badge.width, badge.height, (1118-(trueWidth/2)), (172-(trueHeight/2)), trueWidth, trueHeight);
-            };
-            badge.src = URL.createObjectURL(file);
-        });
-
         function increaseBadgeSize() {
             badgeScale = badgeScale + 0.1;
             updateBackground();
