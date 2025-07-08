@@ -120,12 +120,6 @@
 
     <canvas class="displayBox" id="displayBox" style="border:1px solid #000000;"></canvas>
 
-    <br></br>
-    
-    <input type="file" id="upload" accept="image/*"/>
-    <input type="button" value="Increase (+) Badge Size" onclick="increaseBadgeSize();"/>
-    <input type="button" value="Decrease (-) Badge Size" onclick="decreaseBadgeSize();"/>
-
     <canvas id="fullBox" hidden></canvas>
 
     <script>
@@ -167,16 +161,6 @@
         document.getElementById('numberCallsign').addEventListener('input', function (event) {
             event.target.value = event.target.value.replace(/[^a-zA-Z0-9 ]/g, '');
         });
-
-        function increaseBadgeSize() {
-            badgeScale = badgeScale + 0.1;
-            updateBackground();
-        }
-
-        function decreaseBadgeSize() {
-            badgeScale = badgeScale - 0.1;
-            updateBackground();
-        }
         
         function updateBackground() {
             let dropdown = document.getElementById('backgroundDropdown');
