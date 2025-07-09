@@ -54,6 +54,69 @@
         <option value="21">Super Private</option>
     </select>
 
+    <!-- <select multiple id="ribbonsDropdown" onchange="updateBackground()">
+        <option value="">-- Select Ribbon(s) --</option>
+        <option value="/Ribbons/Offensive Crusades.png">Offensive Crusades</option>
+        <option value="/Ribbons/Defensive Crusade.png">Defensive Crusade</option>
+        <option value="/Ribbons/Outstanding Unit.png">Outstanding Unit</option>
+        <option value="/Ribbons/Choohe Crusade.png">Choohe Crusade</option>
+        <option value="/Ribbons/Genesis Crusade.png">Genesis Crusade</option>
+        <option value="/Ribbons/Jungle Hero Strike.png">Jungle Hero Strike</option>
+        <option value="/Ribbons/Silent Bastion Strike.png">Silent Bastion Strike</option>
+        <option value="/Ribbons/Gloom Crusade.png">Gloom Crusade</option>
+        <option value="/Ribbons/Blitzdiver event.png">Blitzdiver Event</option>
+        <option value="/Ribbons/Dio_s Duck Divers.png">Dio's Duck Divers </option>
+        <option value="/Ribbons/Spore Burn Strike.png">Sporeburn Strike</option>
+        <option value="/Ribbons/General Brasch.png">General Brasch</option>
+        <option value="/Ribbons/John Helldiver.png">John Helldiver</option>
+        <option value="/Ribbons/Medic.png">Medic</option>
+        <option value="/Ribbons/Melee Proficiency.png">Melee Proficiency</option>
+        <option value="/Ribbons/Shots Fired.png">Shots Fired</option>
+        <option value="/Ribbons/Speedruns.png">Speedruns</option>
+        <option value="/Ribbons/Recruitment.png">Recruitment</option>
+        <option value="/Ribbons/Ghost Ribbon.png">Ghost Ribbon</option>
+        <option value="/Ribbons/Soaring Freedom.png">Soaring Freedom</option>
+        <option value="/Ribbons/Angel of Death.png">Angel of Death</option>
+        <option value="/Ribbons/Retirment.png">Retirment</option>
+        <option value="/Ribbons/Stratagem Hero.png">Stratagem Hero</option>
+        <option value="/Ribbons/Total Terminid Kills.png">Terminid Career Kills</option>
+        <option value="/Ribbons/Terminid Kill Record.png">Terminid Kill Record</option>
+        <option value="/Ribbons/Total Automaton Kills.png">Automaton Career Kills</option>
+        <option value="/Ribbons/Automaton Kill Record.png">Automation Kill Record</option>
+        <option value="/Ribbons/Illuminate Kills.png">Illuminate Career Kills</option>
+        <option value="/Ribbons/Illuminate Kill Record.png">Illuminate Kill Record</option>
+        <option value="/Ribbons/Grenade Kills.png">Grenade Kills</option>
+        <option value="/Ribbons/Melee Kills.png">Melee Kills</option>
+        <option value="/Ribbons/Eagle Kills.png">Eagle Kills</option>
+        <!-- Extractions Ribbon would go here (when it's ready)-- >
+        <option value="/Ribbons/Objectives.png">Objectives</option>
+        <option value="/Ribbons/Missions.png">Missions</option>
+        <option value="/Ribbons/Samples.png">Samples</option>
+        <option value="/Ribbons/lvl 150 ribbon, 1x.png">lvl 150 1x</option>
+        <option value="/Ribbons/lvl 150 ribbon, 2x.png">lvl 150 2x</option>
+        <option value="/Ribbons/lvl 150 ribbon, 3x.png">lvl 150 3x</option>
+        <option value="/Ribbons/lvl 150 ribbon, 4x.png">lvl 150 4x</option>
+        <option value="/Ribbons/lvl 150 ribbon, 5x.png">lvl 150 5x</option>
+    </select> -->
+
+    <!-- <select multiple id="MedalsDropdown" onchange="updateBackground()">
+        <option value="">-- Select Medals(s) --</option>
+        <option value="1">Terminid Blitz</option>
+        <option value="2">Offensive Offensive</option>
+        <option value="3">Defensive Crusade</option>
+        <option value="4">Choohe Crusade</option>
+        <option value="5">Genesis Crusade</option>
+        <option value="6">Gloom Crusade</option>
+    </select> -->
+
+    <input id="numberCallsign" type="text" placeholder="Insert number and Callsign" onchange="updateBackground()"/>
+
+    <input id="downloadButton" type="button" value="Download Shadow Box" onclick="downloadShadowBox();"/>
+
+    <br></br>
+
+    </div>
+
     <select multiple id="ribbonsDropdown" onchange="updateBackground()">
         <option value="">-- Select Ribbon(s) --</option>
         <option value="/Ribbons/Offensive Crusades.png">Offensive Crusades</option>
@@ -98,6 +161,9 @@
         <option value="/Ribbons/lvl 150 ribbon, 4x.png">lvl 150 4x</option>
         <option value="/Ribbons/lvl 150 ribbon, 5x.png">lvl 150 5x</option>
     </select>
+    
+    <!-- This is the box shown to the user to show what the shadowbox will look like  -->
+    <canvas class="previewBox" id="previewBox" style="border:1px solid #000000;"></canvas>
 
     <select multiple id="MedalsDropdown" onchange="updateBackground()">
         <option value="">-- Select Medals(s) --</option>
@@ -108,17 +174,6 @@
         <option value="5">Genesis Crusade</option>
         <option value="6">Gloom Crusade</option>
     </select>
-
-    <input id="numberCallsign" type="text" placeholder="Insert number and Callsign" onchange="updateBackground()"/>
-
-    <input id="downloadButton" type="button" value="Download Shadow Box" onclick="downloadShadowBox();"/>
-
-    <br></br>
-
-    </div>
-
-    <!-- This is the box shown to the user to show what the shadowbox will look like  -->
-    <canvas class="previewBox" id="previewBox" style="border:1px solid #000000;"></canvas>
 
     <!-- This is an invisible box that is ultimatly what is downloaded by the user, to maintain the full resolution of elements -->
     <canvas id="fullBox" hidden></canvas>
@@ -151,6 +206,10 @@
 
         document.getElementById('previewBox').width = 2236*shadowBoxScale;
         document.getElementById('previewBox').height = 2796*shadowBoxScale;
+
+        document.getElementById('ribbonsDropdown').height = 2796*shadowBoxScale;
+        document.getElementById('MedalsDropdown').height = 2796*shadowBoxScale;
+        
 
         //This is an invisible box that is ultimatly what is downloaded by the user, to maintain the full resolution of elements
         document.getElementById('fullBox').width = 2236;
@@ -546,6 +605,9 @@
 
                 document.getElementById('previewBox').width = 2236*shadowBoxScale;
                 document.getElementById('previewBox').height = 2796*shadowBoxScale;
+
+                document.getElementById('ribbonsDropdown').height = 2796*shadowBoxScale;
+                document.getElementById('MedalsDropdown').height = 2796*shadowBoxScale;
 
                 updateBackground();
             }
