@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <link href='https://fonts.googleapis.com/css?family=Ubuntu Mono' rel='stylesheet'>
-    <!-- <link href="https://fonts.cdnfonts.com/css/race1-brannt-chiseled-ncv" rel="stylesheet"> -->
     <meta charset="UTF-8">
     <title>HAC Shadowbox Creator</title>
     <link rel="icon" href="https://cdn-longterm.mee6.xyz/plugins/embeds/images/1309714539331325952/55854afc13258498d8efa95fdad3a0e3b54052772ab4a4a9917ee8f426d03717.png">
@@ -19,7 +18,7 @@
         }
     </style>
 </head>
-<body onresize="resizepreviewBox()">
+<body onresize="resizePreviewBox()">
     <Div id="theDiv">
     <h1>Start Making your Shadow Box!</h1>
     <select id="backgroundDropdown" onchange="updateBackground()">
@@ -149,8 +148,8 @@
         var trueWidth = 0;
         var trueHeight = 0;
 
-        document.getElementById('previewBox').style.width = 2236*scale;
-        document.getElementById('previewBox').style.height = 2796*scale;
+        //document.getElementById('previewBox').style.width = 2236*scale;
+        //document.getElementById('previewBox').style.height = 2796*scale;
 
         document.getElementById('previewBox').width = 2236*scale;
         document.getElementById('previewBox').height = 2796*scale;
@@ -588,7 +587,7 @@
             a.download = (name+' shadow box.png');
             a.click();
         }
-        function resizepreviewBox() {
+        function resizePreviewBox() {
             let currentScale = scale;
 
             if ((window.innerHeight-document.getElementById("theDiv").offsetHeight-60) > (window.innerWidth-40)*2796/2236) {
