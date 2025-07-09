@@ -16,6 +16,10 @@
             position: relative;
             margin: auto;
         }
+
+        .ribbonsDropdown {
+            height: 500px;
+        }
     </style>
 </head>
 <body onresize="resizePreviewBox()">
@@ -207,8 +211,8 @@
         document.getElementById('previewBox').width = 2236*shadowBoxScale;
         document.getElementById('previewBox').height = 2796*shadowBoxScale;
 
-        document.getElementById('ribbonsDropdown').size = (2796*shadowBoxScale)/16;
-        document.getElementById('MedalsDropdown').size = (2796*shadowBoxScale)/16;
+        //document.getElementById('ribbonsDropdown').size = (2796*shadowBoxScale)/16;
+        //document.getElementById('MedalsDropdown').size = (2796*shadowBoxScale)/16;
         
 
         //This is an invisible box that is ultimatly what is downloaded by the user, to maintain the full resolution of elements
@@ -587,6 +591,13 @@
         function resizePreviewBox() {
             let currentshadowBoxScale = shadowBoxScale;
 
+            /*if ((window.innerHeight-document.getElementById("theDiv").offsetHeight-60) > (window.innerWidth-40)*2796/2236) {
+                shadowBoxScale = ((window.innerWidth-40)/2236);
+            }
+            if ((window.innerHeight-document.getElementById("theDiv").offsetHeight-60) <= (window.innerWidth-140)*2796/2236) { 
+                shadowBoxScale = ((window.innerHeight-document.getElementById("theDiv").offsetHeight-60)/2796);
+            }*/
+
             if ((window.innerHeight-document.getElementById("theDiv").offsetHeight-60) > (window.innerWidth-40)*2796/2236) {
                 shadowBoxScale = ((window.innerWidth-40)/2236);
             }
@@ -606,8 +617,8 @@
                 document.getElementById('previewBox').width = 2236*shadowBoxScale;
                 document.getElementById('previewBox').height = 2796*shadowBoxScale;
 
-                document.getElementById('ribbonsDropdown').size = (2796*shadowBoxScale)/16;
-                document.getElementById('MedalsDropdown').size = (2796*shadowBoxScale)/16;
+                //document.getElementById('ribbonsDropdown').size = (2796*shadowBoxScale)/16;
+                //document.getElementById('MedalsDropdown').size = (2796*shadowBoxScale)/16;
 
                 updateBackground();
             }
