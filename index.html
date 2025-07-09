@@ -16,10 +16,6 @@
             position: relative;
             margin: auto;
         }
-
-        .ribbonsDropdown {
-            height: 500px;
-        }
     </style>
 </head>
 <body onresize="resizePreviewBox()">
@@ -211,8 +207,8 @@
         document.getElementById('previewBox').width = 2236*shadowBoxScale;
         document.getElementById('previewBox').height = 2796*shadowBoxScale;
 
-        //document.getElementById('ribbonsDropdown').size = (2796*shadowBoxScale)/16;
-        //document.getElementById('MedalsDropdown').size = (2796*shadowBoxScale)/16;
+        document.getElementById('ribbonsDropdown').size = (2796*shadowBoxScale)/17;
+        document.getElementById('MedalsDropdown').size = (2796*shadowBoxScale)/17;
         
 
         //This is an invisible box that is ultimatly what is downloaded by the user, to maintain the full resolution of elements
@@ -617,8 +613,8 @@
                 document.getElementById('previewBox').width = 2236*shadowBoxScale;
                 document.getElementById('previewBox').height = 2796*shadowBoxScale;
 
-                //document.getElementById('ribbonsDropdown').size = (2796*shadowBoxScale)/16;
-                //document.getElementById('MedalsDropdown').size = (2796*shadowBoxScale)/16;
+                document.getElementById('ribbonsDropdown').size = (2796*shadowBoxScale)/17;
+                document.getElementById('MedalsDropdown').size = (2796*shadowBoxScale)/17;
 
                 updateBackground();
             }
