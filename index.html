@@ -13,13 +13,13 @@
             padding: 10px;
         }
 
-        .displayBox {
+        .previewBox {
             position: relative;
             margin: auto;
         }
     </style>
 </head>
-<body onresize="resizeDisplayBox()">
+<body onresize="resizepreviewBox()">
     <Div id="theDiv">
     <h1>Start Making your Shadow Box!</h1>
     <select id="backgroundDropdown" onchange="updateBackground()">
@@ -89,7 +89,7 @@
         <option value="/Ribbons/Grenade Kills.png">Grenade Kills</option>
         <option value="/Ribbons/Melee Kills.png">Melee Kills</option>
         <option value="/Ribbons/Eagle Kills.png">Eagle Kills</option>
-        <!-- Extractions would go here (when it's ready)-->
+        <!-- Extractions Ribbon would go here (when it's ready)-->
         <option value="/Ribbons/Objectives.png">Objectives</option>
         <option value="/Ribbons/Missions.png">Missions</option>
         <option value="/Ribbons/Samples.png">Samples</option>
@@ -118,7 +118,7 @@
 
     </div>
 
-    <canvas class="displayBox" id="displayBox" style="border:1px solid #000000;"></canvas>
+    <canvas class="previewBox" id="previewBox" style="border:1px solid #000000;"></canvas>
 
     <canvas id="fullBox" hidden></canvas>
 
@@ -149,19 +149,22 @@
         var trueWidth = 0;
         var trueHeight = 0;
 
-        document.getElementById('displayBox').style.width = 2236*scale;
-        document.getElementById('displayBox').style.height = 2796*scale;
+        document.getElementById('previewBox').style.width = 2236*scale;
+        document.getElementById('previewBox').style.height = 2796*scale;
 
-        document.getElementById('displayBox').width = 2236*scale;
-        document.getElementById('displayBox').height = 2796*scale;
+        document.getElementById('previewBox').width = 2236*scale;
+        document.getElementById('previewBox').height = 2796*scale;
 
+        //This is an invisible box that is ultimatly what is downloaded by the user, to maintain the full resolution of elements
         document.getElementById('fullBox').width = 2236;
         document.getElementById('fullBox').height = 2796;
 
+        // Only allow numbers 
         document.getElementById('numberCallsign').addEventListener('input', function (event) {
             event.target.value = event.target.value.replace(/[^a-zA-Z0-9 ]/g, '');
         });
-        
+
+        // 
         function updateBackground() {
             let dropdown = document.getElementById('backgroundDropdown');
             let background = document.getElementById('selectedBackground');
@@ -169,6 +172,7 @@
             selectedBackground = new Image();
             selectedBackground.src = dropdown.value;
 
+            //set detachemtn prefix based on the chosen background
             if (dropdown.value == "/Shadowbox Templates/Shadow Box Template, HAC.png") {
                 detachment = "HAC-";
             }
@@ -182,9 +186,8 @@
                 detachment = "PV-";
             }
 
-            // Wait till image is loaded.
             selectedBackground.onload = function () {
-                let canvas = document.getElementById('displayBox');
+                let canvas = document.getElementById('previewBox');
                 let ctx = canvas.getContext('2d');
 
                 //Draw background
@@ -287,7 +290,7 @@
 
             // Wait till image is loaded.
             selectedRank.onload = function () {
-                let canvas = document.getElementById('displayBox');
+                let canvas = document.getElementById('previewBox');
                 let ctx = canvas.getContext('2d');
 
                 //Draw rank icon
@@ -302,7 +305,7 @@
         }
         
         function updateName() {
-            /*let canvas = document.getElementById('displayBox');
+            /*let canvas = document.getElementById('previewBox');
             let ctx = canvas.getContext('2d');
             name = (detachment+document.getElementById('numberCallsign').value.toUpperCase());
             let nameLength = name.length;
@@ -362,7 +365,7 @@
 
             //--------------------------------------------------------------------------------------------------------------------------
 
-            let canvas = document.getElementById('displayBox');
+            let canvas = document.getElementById('previewBox');
             let ctx = canvas.getContext('2d');
             name = (detachment+document.getElementById('numberCallsign').value.toUpperCase());
             let nameArray = name.split(""); //split each character of the entered number and callsign into elements of an array
@@ -444,7 +447,7 @@
                 }
 
                 character.onload = function () {
-                    let canvas = document.getElementById('displayBox');
+                    let canvas = document.getElementById('previewBox');
                     let ctx = canvas.getContext('2d');
                     
                     ctx.drawImage(character, 0, 0, character.width, character.height, (1118-(totalWidth/2)+(characterPositions[i]*textScale))*scale, (557-(100*textScale)+hyphenCompensation)*scale, character.width*textScale*scale, character.height*textScale*scale);
@@ -502,7 +505,7 @@
                 // Wait till image is loaded.
                 medal.onload = function () {
                     // Get Context for canvas to display to the user and draw it
-                    let canvas = document.getElementById('displayBox');
+                    let canvas = document.getElementById('previewBox');
                     let ctx = canvas.getContext('2d');
 
                     let row = 0;
@@ -546,7 +549,7 @@
                 // Wait till image is loaded.
                 ribbon.onload = function () {
                     // Get Context for canvas to display to the user and draw it
-                    let canvas = document.getElementById('displayBox');
+                    let canvas = document.getElementById('previewBox');
                     let ctx = canvas.getContext('2d');
 
                     let row = Math.floor((i+rowOffset)/3);
@@ -585,7 +588,7 @@
             a.download = (name+' shadow box.png');
             a.click();
         }
-        function resizeDisplayBox() {
+        function resizepreviewBox() {
             let currentScale = scale;
 
             if ((window.innerHeight-document.getElementById("theDiv").offsetHeight-60) > (window.innerWidth-40)*2796/2236) {
@@ -599,14 +602,14 @@
 
             //drawImage(img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
             if (currentScale != newScale) {
-                let canvas = document.getElementById('displayBox');
+                let canvas = document.getElementById('previewBox');
                 let ctx = canvas.getContext('2d');
 
-                //document.getElementById('displayBox').style.width = 2236*scale;
-                //document.getElementById('displayBox').style.height = 2796*scale;
+                //document.getElementById('previewBox').style.width = 2236*scale;
+                //document.getElementById('previewBox').style.height = 2796*scale;
 
-                document.getElementById('displayBox').width = 2236*scale;
-                document.getElementById('displayBox').height = 2796*scale;
+                document.getElementById('previewBox').width = 2236*scale;
+                document.getElementById('previewBox').height = 2796*scale;
 
                 updateBackground();
             }
