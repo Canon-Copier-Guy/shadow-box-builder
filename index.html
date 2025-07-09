@@ -117,42 +117,52 @@
 
     </div>
 
+    <!-- This is the box shown to the user to show what the shadowbox will look like  -->
     <canvas class="previewBox" id="previewBox" style="border:1px solid #000000;"></canvas>
 
+    <!-- This is an invisible box that is ultimatly what is downloaded by the user, to maintain the full resolution of elements -->
     <canvas id="fullBox" hidden></canvas>
 
-    <script>
-        var scale = 0;
+    <script> //javascript, hehe
+        var shadowBoxScale = 0;
 
+        //scales down the preview box based on the size of the view window
         if ((window.innerHeight-document.getElementById("theDiv").offsetHeight-60) > (window.innerWidth-40)*2796/2236) {
-            scale = ((window.innerWidth-40)/2236);
+            shadowBoxScale = ((window.innerWidth-40)/2236);
         }
         if ((window.innerHeight-document.getElementById("theDiv").offsetHeight-60) <= (window.innerWidth-40)*2796/2236) { 
-            scale = ((window.innerHeight-document.getElementById("theDiv").offsetHeight-60)/2796);
+            shadowBoxScale = ((window.innerHeight-document.getElementById("theDiv").offsetHeight-60)/2796);
         }
 
-        //const scale = 0.5;
         var selectedRank;
         var selectedRankIconWidth;
         var selectedRankIconHeight;
         var selectedMedalWidth;
         var selectedMedalHeight;
         var selectedBackground;
-        var detachment = "";
+        //var detachment = "";
+        //var name = "";
+        //var textWidth;
+        //var textHeight;
+        //var badge = "";
+        //var badgeshadowBoxScale = 0;
+        //var trueWidth = 0;
+        //var trueHeight = 0;
 
+        var detachment = "";
         var name = "";
         var textWidth;
         var textHeight;
         var badge = "";
-        var badgeScale = 0;
+        var badgeshadowBoxScale = 0;
         var trueWidth = 0;
         var trueHeight = 0;
 
-        //document.getElementById('previewBox').style.width = 2236*scale;
-        //document.getElementById('previewBox').style.height = 2796*scale;
+        //document.getElementById('previewBox').style.width = 2236*shadowBoxScale;
+        //document.getElementById('previewBox').style.height = 2796*shadowBoxScale;
 
-        document.getElementById('previewBox').width = 2236*scale;
-        document.getElementById('previewBox').height = 2796*scale;
+        document.getElementById('previewBox').width = 2236*shadowBoxScale;
+        document.getElementById('previewBox').height = 2796*shadowBoxScale;
 
         //This is an invisible box that is ultimatly what is downloaded by the user, to maintain the full resolution of elements
         document.getElementById('fullBox').width = 2236;
@@ -190,7 +200,7 @@
                 let ctx = canvas.getContext('2d');
 
                 //Draw background
-                ctx.drawImage(selectedBackground, 0, 0, selectedBackground.width, selectedBackground.height, 0, 0, 2236*scale, 2796*scale);
+                ctx.drawImage(selectedBackground, 0, 0, selectedBackground.width, selectedBackground.height, 0, 0, 2236*shadowBoxScale, 2796*shadowBoxScale);
 
                 // Get context for full resolution canvas and draw it
                 canvas = document.getElementById('fullBox');
@@ -293,7 +303,7 @@
                 let ctx = canvas.getContext('2d');
 
                 //Draw rank icon
-                ctx.drawImage(selectedRank, 0, 0, selectedRank.width, selectedRank.height, (2123-(selectedRankIconWidth/2))*scale, (239-selectedRankIconHeight)*scale, selectedRankIconWidth*scale, selectedRankIconHeight*scale);
+                ctx.drawImage(selectedRank, 0, 0, selectedRank.width, selectedRank.height, (2123-(selectedRankIconWidth/2))*shadowBoxScale, (239-selectedRankIconHeight)*shadowBoxScale, selectedRankIconWidth*shadowBoxScale, selectedRankIconHeight*shadowBoxScale);
             
                 // Get context for full resolution canvas and draw it
                 canvas = document.getElementById('fullBox');
@@ -309,7 +319,7 @@
             name = (detachment+document.getElementById('numberCallsign').value.toUpperCase());
             let nameLength = name.length;
 
-            textHeight = Math.round(130*scale);
+            textHeight = Math.round(130*shadowBoxScale);
             ctx.font = (textHeight+'px Ubuntu Mono');
             textWidth = ctx.measureText(name).width;
             textWidth = ctx.measureText(name).width;
@@ -321,11 +331,11 @@
 
             // Calculate the height of the text based on font size and line height
 
-            if (textWidth >= 642*scale) {
-                textHeight = Math.round(((642*scale)/nameLength)*2);
-                textHeight = Math.round(((642*scale)/nameLength)*2);
+            if (textWidth >= 642*shadowBoxScale) {
+                textHeight = Math.round(((642*shadowBoxScale)/nameLength)*2);
+                textHeight = Math.round(((642*shadowBoxScale)/nameLength)*2);
                 ctx.font = (textHeight+'px Ubuntu Mono');
-                textWidth = 642*scale;
+                textWidth = 642*shadowBoxScale;
             }
             else {
                 ctx.font = (textHeight+'px Ubuntu Mono');
@@ -334,8 +344,8 @@
             }
 
             //Draw text
-            ctx.fillText(name, (1118*scale)-textWidth/2, (557*scale)+textHeight/4);
-            ctx.fillText(name, (1118*scale)-textWidth/2, (557*scale)+textHeight/4);
+            ctx.fillText(name, (1118*shadowBoxScale)-textWidth/2, (557*shadowBoxScale)+textHeight/4);
+            ctx.fillText(name, (1118*shadowBoxScale)-textWidth/2, (557*shadowBoxScale)+textHeight/4);
 
             ctx.shadowOffsetX = 0;
             ctx.shadowOffsetY = 0;
@@ -344,7 +354,7 @@
             canvas = document.getElementById('fullBox');
             ctx = canvas.getContext('2d');
 
-            textHeight = Math.round(textHeight/scale);
+            textHeight = Math.round(textHeight/shadowBoxScale);
             ctx.font = (textHeight+'px Ubuntu Mono');
             textWidth = ctx.measureText(name).width;
             textWidth = ctx.measureText(name).width;
@@ -417,18 +427,18 @@
                 totalWidth = totalWidth + characterWidths[nameArray[i]];
             }
 
-            //scale down letters if the name is too wide
-            let textScale = 1;
+            //shadowBoxScale down letters if the name is too wide
+            let textshadowBoxScale = 1;
             let rawWidth = totalWidth;
                 
             if (totalWidth > 642) {
-                textScale = 642/totalWidth;
+                textshadowBoxScale = 642/totalWidth;
                 totalWidth = 642;
             }
 
             console.log(nameArray);
             console.log(characterPositions);
-            console.log("Total Width: "+totalWidth+"Raw Width: "+rawWidth+" | Text Scale: "+textScale);
+            console.log("Total Width: "+totalWidth+"Raw Width: "+rawWidth+" | Text shadowBoxScale: "+textshadowBoxScale);
             
             for (let i = 0; i < nameArray.length; i++) { //load in the image of every character, and draw it
                 let character = new Image();
@@ -442,19 +452,19 @@
                 }
 
                 if (nameArray[i] == "-") {
-                    hyphenCompensation = 84*textScale;
+                    hyphenCompensation = 84*textshadowBoxScale;
                 }
 
                 character.onload = function () {
                     let canvas = document.getElementById('previewBox');
                     let ctx = canvas.getContext('2d');
                     
-                    ctx.drawImage(character, 0, 0, character.width, character.height, (1118-(totalWidth/2)+(characterPositions[i]*textScale))*scale, (557-(100*textScale)+hyphenCompensation)*scale, character.width*textScale*scale, character.height*textScale*scale);
+                    ctx.drawImage(character, 0, 0, character.width, character.height, (1118-(totalWidth/2)+(characterPositions[i]*textshadowBoxScale))*shadowBoxScale, (557-(100*textshadowBoxScale)+hyphenCompensation)*shadowBoxScale, character.width*textshadowBoxScale*shadowBoxScale, character.height*textshadowBoxScale*shadowBoxScale);
 
                     canvas = document.getElementById('fullBox');
                     ctx = canvas.getContext('2d');
 
-                    ctx.drawImage(character, 0, 0, character.width, character.height, 1118-(totalWidth/2)+(characterPositions[i]*textScale), 557-(100*textScale)+hyphenCompensation, character.width*textScale, character.height*textScale);
+                    ctx.drawImage(character, 0, 0, character.width, character.height, 1118-(totalWidth/2)+(characterPositions[i]*textshadowBoxScale), 557-(100*textshadowBoxScale)+hyphenCompensation, character.width*textshadowBoxScale, character.height*textshadowBoxScale);
                 };
             }/**/
         }
@@ -512,7 +522,7 @@
                     row = Math.floor(i/3);
 
                     //Draw medal
-                    ctx.drawImage(medal, 0, 0, medal.width, medal.height, (215-(medalWidths[selectedValues[i]]/2)+((i-(3*row))*344))*scale, (775+(525*row))*scale, medalWidths[selectedValues[i]]*scale,  medalHeights[selectedValues[i]]*scale);
+                    ctx.drawImage(medal, 0, 0, medal.width, medal.height, (215-(medalWidths[selectedValues[i]]/2)+((i-(3*row))*344))*shadowBoxScale, (775+(525*row))*shadowBoxScale, medalWidths[selectedValues[i]]*shadowBoxScale,  medalHeights[selectedValues[i]]*shadowBoxScale);
 
                     // Get context for full resolution canvas and draw it
                     canvas = document.getElementById('fullBox');
@@ -554,13 +564,13 @@
                     let row = Math.floor((i+rowOffset)/3);
 
                     if (selectedValues.length % 3 == 1 && row == 0) {
-                        ctx.drawImage(ribbon, 0, 0, ribbon.width, ribbon.height, (1118+(312))*scale, 775*scale, 312*scale, 75*scale);
+                        ctx.drawImage(ribbon, 0, 0, ribbon.width, ribbon.height, (1118+(312))*shadowBoxScale, 775*shadowBoxScale, 312*shadowBoxScale, 75*shadowBoxScale);
                     }
                     else if (selectedValues.length % 3 == 2 && row == 0) {
-                        ctx.drawImage(ribbon, 0, 0, ribbon.width, ribbon.height, (1118+(312*(i+0.5)))*scale, 775*scale, 312*scale, 75*scale);
+                        ctx.drawImage(ribbon, 0, 0, ribbon.width, ribbon.height, (1118+(312*(i+0.5)))*shadowBoxScale, 775*shadowBoxScale, 312*shadowBoxScale, 75*shadowBoxScale);
                     }
                     else {
-                        ctx.drawImage(ribbon, 0, 0, ribbon.width, ribbon.height, (1118+(312*((i+rowOffset)-(row*3))))*scale, (775+(75*row)) *scale, 312*scale, 75*scale);
+                        ctx.drawImage(ribbon, 0, 0, ribbon.width, ribbon.height, (1118+(312*((i+rowOffset)-(row*3))))*shadowBoxScale, (775+(75*row)) *shadowBoxScale, 312*shadowBoxScale, 75*shadowBoxScale);
                     }
 
                     // Get context for full resolution canvas and draw it
@@ -588,27 +598,26 @@
             a.click();
         }
         function resizePreviewBox() {
-            let currentScale = scale;
+            let currentshadowBoxScale = shadowBoxScale;
 
             if ((window.innerHeight-document.getElementById("theDiv").offsetHeight-60) > (window.innerWidth-40)*2796/2236) {
-                scale = ((window.innerWidth-40)/2236);
+                shadowBoxScale = ((window.innerWidth-40)/2236);
             }
             if ((window.innerHeight-document.getElementById("theDiv").offsetHeight-60) <= (window.innerWidth-140)*2796/2236) { 
-                scale = ((window.innerHeight-document.getElementById("theDiv").offsetHeight-60)/2796);
+                shadowBoxScale = ((window.innerHeight-document.getElementById("theDiv").offsetHeight-60)/2796);
             }
 
-            let newScale = scale;
+            let newshadowBoxScale = shadowBoxScale;
 
             //drawImage(img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
-            if (currentScale != newScale) {
+            
+            if (currentshadowBoxScale != newshadowBoxScale) {
                 let canvas = document.getElementById('previewBox');
                 let ctx = canvas.getContext('2d');
 
-                //document.getElementById('previewBox').style.width = 2236*scale;
-                //document.getElementById('previewBox').style.height = 2796*scale;
 
-                document.getElementById('previewBox').width = 2236*scale;
-                document.getElementById('previewBox').height = 2796*scale;
+                document.getElementById('previewBox').width = 2236*shadowBoxScale;
+                document.getElementById('previewBox').height = 2796*shadowBoxScale;
 
                 updateBackground();
             }
